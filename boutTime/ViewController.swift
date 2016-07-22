@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UIViewController {
 
@@ -40,13 +41,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var boxThreeUpArrowConstraint: NSLayoutConstraint!
     @IBOutlet weak var boxThreeDownArrowConstraint: NSLayoutConstraint!
     
+    var correctSound:SystemSoundID = 0
+    var failSound:SystemSoundID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setBoxesHeiht(factor: 6)
         makeCornerRound(Viewradius: 5, buttonRadius: 15)
-        selectInterface(.gameResult)
+        laodAllSounds()
+        selectInterface(.roundResultFail)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,10 +79,10 @@ class ViewController: UIViewController {
         boxInfosView.hidden = hidden
     }
     
-    func hideBottomUI(hidden:Bool){
+    func bottomUIRoundInProgress(hidden:Bool){
         nextRoundBtn.hidden = hidden
-        timerLbl.hidden = hidden
-        bottomInfoLbl.hidden = hidden
+        timerLbl.hidden = !hidden
+        bottomInfoLbl.hidden = !hidden
         infoBtn.hidden = hidden
     }
     
@@ -121,26 +125,25 @@ class ViewController: UIViewController {
         case .roundInProgress:
             hideResultUI(true)
             hideBoxes(false)
-            nextRoundBtn.hidden = true
-            infoBtn.hidden = true
+            bottomUIRoundInProgress(true)
         case .roundResultSuccess:
             hideResultUI(true)
             hideBoxes(false)
             nextRoundBtn.setImage(NextRoundImg.next_round_success.icon(), forState: .Normal)
-            hideBottomUI(false)
-            bottomInfoLbl.hidden = true
+            bottomUIRoundInProgress(false)
+            playSound(correctSound)
         case .roundResultFail:
             hideResultUI(true)
             hideBoxes(false)
             nextRoundBtn.setImage(NextRoundImg.next_round_fail.icon(), forState: .Normal)
-            hideBottomUI(false)
-            bottomInfoLbl.hidden = true
+            bottomUIRoundInProgress(false)
+            playSound(failSound)
         case .gameResult:
             yourScoreLbl.text = "Your Score"
             playAgainBtn.setTitle("Play Again", forState: .Normal)
             hideResultUI(false)
             hideBoxes(true)
-            hideBottomUI(true)
+            bottomUIRoundInProgress(true)
         }
     }
     
@@ -163,6 +166,30 @@ class ViewController: UIViewController {
         boxTwoDownArrowHeightConstraint.constant = height
         boxThreeUpArrowConstraint.constant = height
         boxThreeDownArrowConstraint.constant = height
+    }
+    
+    //MARK: sound Helper
+    enum Sounds:String{
+        case CorrectDing
+        case IncorrectBuzz
+    }
+    
+    func laodAllSounds(){
+        let wav = "wav"
+        correctSound = loadSound(correctSound, pathName: Sounds.CorrectDing.rawValue, type: wav)
+        failSound = loadSound(failSound, pathName: Sounds.IncorrectBuzz.rawValue, type: wav)
+    }
+    
+    func loadSound(systSoundId:SystemSoundID, pathName:String, type:String) -> SystemSoundID{
+        var sound = SystemSoundID()
+        let pathToSoundFile = NSBundle.mainBundle().pathForResource(pathName, ofType: type)
+        let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
+        AudioServicesCreateSystemSoundID(soundURL, &sound)
+        return sound
+    }
+    
+    func playSound(soundId:SystemSoundID) {
+        AudioServicesPlaySystemSound(soundId)
     }
 }
 
