@@ -27,6 +27,8 @@
 		D95AF15A1D425F5A0091B0F0 /* up_half_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF14D1D425F5A0091B0F0 /* up_half_selected.png */; };
 		D95AF15B1D425F5A0091B0F0 /* up_half.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF14E1D425F5A0091B0F0 /* up_half.png */; };
 		D95AF15C1D425F5A0091B0F0 /* webview_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF14F1D425F5A0091B0F0 /* webview_bar.png */; };
+		D95AF1651D42952C0091B0F0 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF1641D42952C0091B0F0 /* Info.png */; };
+		D95AF1671D42984C0091B0F0 /* gameLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF1661D42984C0091B0F0 /* gameLogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		D95AF14D1D425F5A0091B0F0 /* up_half_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_half_selected.png; sourceTree = "<group>"; };
 		D95AF14E1D425F5A0091B0F0 /* up_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_half.png; sourceTree = "<group>"; };
 		D95AF14F1D425F5A0091B0F0 /* webview_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webview_bar.png; sourceTree = "<group>"; };
+		D95AF1641D42952C0091B0F0 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Info.png; sourceTree = "<group>"; };
+		D95AF1661D42984C0091B0F0 /* gameLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameLogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 				D95AF14D1D425F5A0091B0F0 /* up_half_selected.png */,
 				D95AF14E1D425F5A0091B0F0 /* up_half.png */,
 				D95AF14F1D425F5A0091B0F0 /* webview_bar.png */,
+				D95AF1641D42952C0091B0F0 /* Info.png */,
+				D95AF1661D42984C0091B0F0 /* gameLogo.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -198,10 +204,12 @@
 				D95AF1521D425F5A0091B0F0 /* down_half_selected.png in Resources */,
 				D95AF1351D425D170091B0F0 /* Assets.xcassets in Resources */,
 				D95AF15C1D425F5A0091B0F0 /* webview_bar.png in Resources */,
+				D95AF1671D42984C0091B0F0 /* gameLogo.png in Resources */,
 				D95AF1531D425F5A0091B0F0 /* down_half.png in Resources */,
 				D95AF1581D425F5A0091B0F0 /* up_full_selected.png in Resources */,
 				D95AF1561D425F5A0091B0F0 /* play_again.png in Resources */,
 				D95AF1501D425F5A0091B0F0 /* down_full_selected.png in Resources */,
+				D95AF1651D42952C0091B0F0 /* Info.png in Resources */,
 				D95AF1331D425D170091B0F0 /* Main.storyboard in Resources */,
 				D95AF1551D425F5A0091B0F0 /* next_round_success.png in Resources */,
 				D95AF15B1D425F5A0091B0F0 /* up_half.png in Resources */,

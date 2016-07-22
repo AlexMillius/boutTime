@@ -17,16 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="nRx-Gg-uO5">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="nRx-Gg-uO5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nRx-Gg-uO5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="5ES-Ha-dJp"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="nRx-Gg-uO5" secondAttribute="bottom" id="WN6-as-k7c"/>
-                            <constraint firstItem="nRx-Gg-uO5" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="bfV-Fb-DTT"/>
-                            <constraint firstAttribute="trailing" secondItem="nRx-Gg-uO5" secondAttribute="trailing" id="kIV-Dk-ViH"/>
+                            <constraint firstAttribute="trailing" secondItem="nRx-Gg-uO5" secondAttribute="trailing" id="3Fk-UZ-5Yi"/>
+                            <constraint firstItem="nRx-Gg-uO5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="UXe-gz-Ypd"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="nRx-Gg-uO5" secondAttribute="bottom" id="W4s-Od-07T"/>
+                            <constraint firstItem="nRx-Gg-uO5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="h4A-bI-9My"/>
                         </constraints>
                     </view>
                 </viewController>
