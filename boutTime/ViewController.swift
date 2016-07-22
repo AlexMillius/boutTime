@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  boutTime
 //
-//  Created by Mohamed Lee on 22.07.16.
+//  Created by Alex Millius on 22.07.16.
 //  Copyright © 2016 TumTum. All rights reserved.
 //
 
@@ -44,13 +44,22 @@ class ViewController: UIViewController {
     var correctSound:SystemSoundID = 0
     var failSound:SystemSoundID = 0
     
+    var rounds = [RoundType]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setBoxesHeiht(factor: 6)
         makeCornerRound(Viewradius: 5, buttonRadius: 15)
         laodAllSounds()
-        selectInterface(.roundResultFail)
+        selectInterface(.instruction)
+        do {
+            let dictionary = try PlistConverter.dictionaryFromFile("Rounds", ofType: "plist")
+            rounds = try EventUnarchiver.eventInventoryFromDictionary(dictionary)
+            
+        }  catch let error {
+            fatalError("\(error)")
+        }
     }
 
     override func didReceiveMemoryWarning() {

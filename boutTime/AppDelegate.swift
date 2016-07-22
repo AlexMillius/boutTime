@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  boutTime
 //
-//  Created by Mohamed Lee on 22.07.16.
+//  Created by Alex Millius on 22.07.16.
 //  Copyright © 2016 TumTum. All rights reserved.
 //
 
