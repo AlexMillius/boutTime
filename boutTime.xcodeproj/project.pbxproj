@@ -29,6 +29,7 @@
 		D95AF15C1D425F5A0091B0F0 /* webview_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF14F1D425F5A0091B0F0 /* webview_bar.png */; };
 		D95AF1651D42952C0091B0F0 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF1641D42952C0091B0F0 /* Info.png */; };
 		D95AF1671D42984C0091B0F0 /* gameLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF1661D42984C0091B0F0 /* gameLogo.png */; };
+		D9D70D391D42B595006BF196 /* Rounds.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9D70D381D42B595006BF196 /* Rounds.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		D95AF14F1D425F5A0091B0F0 /* webview_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webview_bar.png; sourceTree = "<group>"; };
 		D95AF1641D42952C0091B0F0 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Info.png; sourceTree = "<group>"; };
 		D95AF1661D42984C0091B0F0 /* gameLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameLogo.png; sourceTree = "<group>"; };
+		D9D70D381D42B595006BF196 /* Rounds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Rounds.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				D95AF1341D425D170091B0F0 /* Assets.xcassets */,
 				D95AF1361D425D170091B0F0 /* LaunchScreen.storyboard */,
 				D95AF1391D425D170091B0F0 /* Info.plist */,
+				D9D70D381D42B595006BF196 /* Rounds.plist */,
 				D95AF15D1D425F6C0091B0F0 /* Assets */,
 			);
 			path = boutTime;
@@ -210,6 +213,7 @@
 				D95AF1561D425F5A0091B0F0 /* play_again.png in Resources */,
 				D95AF1501D425F5A0091B0F0 /* down_full_selected.png in Resources */,
 				D95AF1651D42952C0091B0F0 /* Info.png in Resources */,
+				D9D70D391D42B595006BF196 /* Rounds.plist in Resources */,
 				D95AF1331D425D170091B0F0 /* Main.storyboard in Resources */,
 				D95AF1551D425F5A0091B0F0 /* next_round_success.png in Resources */,
 				D95AF15B1D425F5A0091B0F0 /* up_half.png in Resources */,
@@ -383,6 +387,7 @@
 				D95AF13E1D425D170091B0F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

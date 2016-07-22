@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bourne</key>
+	<dict>
+		<key>event1</key>
+		<string>The Bourne Identity</string>
+		<key>event2</key>
+		<string>The Bourne Supremacy</string>
+		<key>event3</key>
+		<string>The Bourne Ultimatum</string>
+		<key>event4</key>
+		<string>The Bourne Legacy</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Bourne_(film_series)</string>
+	</dict>
+	<key>Lilo &amp; Stitch</key>
+	<dict>
+		<key>event1</key>
+		<string>Lilo &amp; Stitch</string>
+		<key>event2</key>
+		<string>Stitch!  The Movie</string>
+		<key>event3</key>
+		<string>Stitch Has a Glitch</string>
+		<key>event4</key>
+		<string>Leroy and Stitch</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Lilo_%26_Stitch_(franchise)</string>
+	</dict>
+	<key>Lucky Luke</key>
+	<dict>
+		<key>event1</key>
+		<string>Lucky Luke\nDaisy Town</string>
+		<key>event2</key>
+		<string>Lucky Luke\nThe Ballad of the Daltons</string>
+		<key>event3</key>
+		<string>Lucky Luke\nThe Daltons on the Loose</string>
+		<key>event4</key>
+		<string>Go West: A Lucky Luke Adventure</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Lucky_Luke</string>
+	</dict>
+	<key>Madagascar</key>
+	<dict>
+		<key>event1</key>
+		<string>Madagascar</string>
+		<key>event2</key>
+		<string>Madagascar\nEscape 2 Africa</string>
+		<key>event3</key>
+		<string>Madagascar\nEurope&apos;s Most Wanted</string>
+		<key>event4</key>
+		<string>Penguins of Madagascar</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Madagascar_(franchise)</string>
+	</dict>
+	<key>Alvin and the Chipmunks</key>
+	<dict>
+		<key>event1</key>
+		<string>Alvin and the Chipmunks</string>
+		<key>event2</key>
+		<string>Alvin and the Chipmunks\nThe Squeakquel</string>
+		<key>event3</key>
+		<string>Alvin and the Chipmunks\nChipwrecked</string>
+		<key>event4</key>
+		<string>Alvin and the Chipmunks\nThe Road Chip</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Alvin_and_the_Chipmunks_(film_series)</string>
+	</dict>
+	<key>Mad Max</key>
+	<dict>
+		<key>event1</key>
+		<string>Mad Max</string>
+		<key>event2</key>
+		<string>Mad Max\nThe Road Warrior</string>
+		<key>event3</key>
+		<string>Mad Max\nBeyond Thunderdome</string>
+		<key>event4</key>
+		<string>Mad Max\nFury Road</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Mad_Max_(franchise)</string>
+	</dict>
+	<key>Apocalypse</key>
+	<dict>
+		<key>event1</key>
+		<string>Apocalypse</string>
+		<key>event2</key>
+		<string>Apocalypse\nRevelation</string>
+		<key>event3</key>
+		<string>Apocalypse\nTribulation</string>
+		<key>event4</key>
+		<string>Apocalypse\nJudgment</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Apocalypse_(film_series)</string>
+	</dict>
+	<key>Astérix &amp; Obélix</key>
+	<dict>
+		<key>event1</key>
+		<string>Astérix &amp; Obélix\nTake On Caesar</string>
+		<key>event2</key>
+		<string>Astérix &amp; Obélix\nMission Cleopatra</string>
+		<key>event3</key>
+		<string>Astérix at the Olympic Games</string>
+		<key>event4</key>
+		<string>Astérix &amp; Obélix\nGod Save Britannia</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Asterix_films_(live_action)</string>
+	</dict>
+	<key>Batman</key>
+	<dict>
+		<key>event1</key>
+		<string>Batman</string>
+		<key>event2</key>
+		<string>Batman Returns</string>
+		<key>event3</key>
+		<string>Batman Forever</string>
+		<key>event4</key>
+		<string>Batman &amp; Robin</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Batman_in_film</string>
+	</dict>
+	<key>The Mummy</key>
+	<dict>
+		<key>event1</key>
+		<string>The Mummy</string>
+		<key>event2</key>
+		<string>The Curse of the Mummy&apos;s Tomb</string>
+		<key>event3</key>
+		<string>The Mummy&apos;s Shroud</string>
+		<key>event4</key>
+		<string>Blood from the Mummy&apos;s Tomb</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/The_Mummy_(franchise)</string>
+	</dict>
+	<key>P.R.O.B.E</key>
+	<dict>
+		<key>event1</key>
+		<string>P.R.O.B.E:\nThe Zero Imperative</string>
+		<key>event2</key>
+		<string>P.R.O.B.E:\nThe Devil of Winterborne</string>
+		<key>event3</key>
+		<string>P.R.O.B.E:\nUnnatural Selection</string>
+		<key>event4</key>
+		<string>P.R.O.B.E:\nGhost of Winterborne</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/P.R.O.B.E.</string>
+	</dict>
+	<key>Rambo</key>
+	<dict>
+		<key>event1</key>
+		<string>Rambo\nFirst Blood</string>
+		<key>event2</key>
+		<string>Rambo\nFirst Blood Part II</string>
+		<key>event3</key>
+		<string>Rambo III</string>
+		<key>event4</key>
+		<string>Rambo</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Rambo_(film_series)</string>
+	</dict>
+	<key>The Lion King</key>
+	<dict>
+		<key>event1</key>
+		<string>The Lion King</string>
+		<key>event2</key>
+		<string>The Kion King II</string>
+		<key>event3</key>
+		<string>The Kion King 1 1/2</string>
+		<key>event4</key>
+		<string>The Lion Guard\nReturn of the Roar</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/The_Lion_King_(franchise)</string>
+	</dict>
+	<key>Divergent</key>
+	<dict>
+		<key>event1</key>
+		<string>The Divergent Series:\nDivergent</string>
+		<key>event2</key>
+		<string>The Divergent Series:\nInsurgent</string>
+		<key>event3</key>
+		<string>The Divergent Series:\nAllegiant</string>
+		<key>event4</key>
+		<string>The Divergent Series:\nAscendant</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/The_Divergent_Series</string>
+	</dict>
+	<key>Scooby Doo</key>
+	<dict>
+		<key>event1</key>
+		<string>Scooby-Doo</string>
+		<key>event2</key>
+		<string>Scobby-Doo\nMonsters Unleashed</string>
+		<key>event3</key>
+		<string>Scobby-Doo!\nThe Mystery Begins</string>
+		<key>event4</key>
+		<string>Scobby-Doo!\nCurse of the Lake Monster</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Scooby_Doo_(film_series)</string>
+	</dict>
+	<key>Dragon Ball</key>
+	<dict>
+		<key>event1</key>
+		<string>Dragon Ball\nCurse of the Blood Tubies</string>
+		<key>event2</key>
+		<string>Dragon Ball\nSleeping Princess in Devil&apos;s Castle</string>
+		<key>event3</key>
+		<string>Dragon Ball\nMystical Adventure</string>
+		<key>event4</key>
+		<string>Dragon Ball\nThePath to Power</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Dragon_Ball_(anime)</string>
+	</dict>
+	<key>Evil Dead</key>
+	<dict>
+		<key>event1</key>
+		<string>The Evil Dead</string>
+		<key>event2</key>
+		<string>Evil Dead II</string>
+		<key>event3</key>
+		<string>Evil Dead\nArmy of Darkness</string>
+		<key>event4</key>
+		<string>Evil Dead</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Evil_Dead</string>
+	</dict>
+	<key>Spy Kids</key>
+	<dict>
+		<key>event1</key>
+		<string>Spy Kids</string>
+		<key>event2</key>
+		<string>Spy Kids\nIsland of Lost</string>
+		<key>event3</key>
+		<string>Spy Kids\nGame Over</string>
+		<key>event4</key>
+		<string>Spy Kids\nAll the Time in the World</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Spy_Kids_(franchise)</string>
+	</dict>
+	<key>Starship Troopers</key>
+	<dict>
+		<key>event1</key>
+		<string>Starship Troopers</string>
+		<key>event2</key>
+		<string>Starship Troopers\nHero of the Federation</string>
+		<key>event3</key>
+		<string>Starship Troopers\nMarauder</string>
+		<key>event4</key>
+		<string>Starship Troopers\nInvasion</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Starship_Troopers</string>
+	</dict>
+	<key>Futurama</key>
+	<dict>
+		<key>event1</key>
+		<string>Futurama\nBender&apos;s Big Score</string>
+		<key>event2</key>
+		<string>Futurama\nThe Beast with a Billion Backs</string>
+		<key>event3</key>
+		<string>Futurama\nBender&apos;s Game</string>
+		<key>event4</key>
+		<string>Futurama\nInto the Wild Green Yonder</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Futurama</string>
+	</dict>
+	<key>Hannibal Lecter</key>
+	<dict>
+		<key>event1</key>
+		<string>The Silence of the Lambs</string>
+		<key>event2</key>
+		<string>Hannibal</string>
+		<key>event3</key>
+		<string>Red Dragon</string>
+		<key>event4</key>
+		<string>Hannibal Rising</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Hannibal_Lecter</string>
+	</dict>
+	<key>The Hunger Games</key>
+	<dict>
+		<key>event1</key>
+		<string>The Hunger Games</string>
+		<key>event2</key>
+		<string>The Hunger Games\nCatching Fire</string>
+		<key>event3</key>
+		<string>The Hunger Games\nMockingjay</string>
+		<key>event4</key>
+		<string>The Hunger Games\nMockingjay Part 2</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/The_Hunger_Games_(film_series)</string>
+	</dict>
+	<key>Imperium</key>
+	<dict>
+		<key>event1</key>
+		<string>Imperium\nAugustus</string>
+		<key>event2</key>
+		<string>Imperium\nNero</string>
+		<key>event3</key>
+		<string>Imperium\nSaint Peter</string>
+		<key>event4</key>
+		<string>Imperium\nPompei</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Imperium_(film)</string>
+	</dict>
+	<key>Indiana Jones</key>
+	<dict>
+		<key>event1</key>
+		<string>Indiana Jones\nRaiders of the Lost Ark</string>
+		<key>event2</key>
+		<string>Indiana Jones\nand the Temple of Doom</string>
+		<key>event3</key>
+		<string>Indiana Jones\nand the Last Crusade</string>
+		<key>event4</key>
+		<string>Indiana Jones\nand the Kingdom of the Crystal Skull</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Indiana_Jones_(franchise)</string>
+	</dict>
+	<key>Inspector Gadget</key>
+	<dict>
+		<key>event1</key>
+		<string>The Amazing Adventures of Inspector Gadget</string>
+		<key>event2</key>
+		<string>Inspector Gadget\nGadget&apos;s Greatest Gadgets</string>
+		<key>event3</key>
+		<string>Inspector Gadge Last Caset\nClaw&apos;s Revenge</string>
+		<key>event4</key>
+		<string>Inspector Gadget&apos;s Biggest Caper Ever\nThe Case Of The Giant Flying Lizard</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Indiana_Jones_(franchise)</string>
+	</dict>
+	<key>Transformers</key>
+	<dict>
+		<key>event1</key>
+		<string>Transformers</string>
+		<key>event2</key>
+		<string>Transformers\nRevenge of the Fallen</string>
+		<key>event3</key>
+		<string>Transformers\nDark of the Moon</string>
+		<key>event4</key>
+		<string>Transformers\nAge of Extinction</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Transformers_(film_series)</string>
+	</dict>
+	<key>Jurassic Park</key>
+	<dict>
+		<key>event1</key>
+		<string>Jurassic Park</string>
+		<key>event2</key>
+		<string>Jurassic Park\nThe Lost World</string>
+		<key>event3</key>
+		<string>Jurassic Park III</string>
+		<key>event4</key>
+		<string>Jurassic World</string>
+		<key>infos</key>
+		<string>https://en.wikipedia.org/wiki/Jurassic_Park</string>
+	</dict>
+</dict>
+</plist>

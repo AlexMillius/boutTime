@@ -118,7 +118,7 @@ class ViewController: UIViewController {
         switch interface {
         case .instruction:
             //use the score Label and the play again button to display some instructions
-            yourScoreLbl.text = "Welcome to the game\nYou have 60 seconds per round\nGood Luck!"
+            yourScoreLbl.text = "Welcome to the game\nClass the moovies in order of release\nYou have 60 seconds per round\nGood Luck!"
             playAgainBtn.setTitle("Let's Go", forState: .Normal)
             hideResultUI(false)
             hideBoxes(true)
