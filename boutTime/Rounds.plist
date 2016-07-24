@@ -31,11 +31,11 @@
 	<key>Lucky Luke</key>
 	<dict>
 		<key>event1</key>
-		<string>Lucky Luke\nDaisy Town</string>
+		<string>Lucky Luke Daisy Town</string>
 		<key>event2</key>
-		<string>Lucky Luke\nThe Ballad of the Daltons</string>
+		<string>Lucky Luke The Ballad of the Daltons</string>
 		<key>event3</key>
-		<string>Lucky Luke\nThe Daltons on the Loose</string>
+		<string>Lucky Luke The Daltons on the Loose</string>
 		<key>event4</key>
 		<string>Go West: A Lucky Luke Adventure</string>
 		<key>infos</key>
@@ -46,9 +46,9 @@
 		<key>event1</key>
 		<string>Madagascar</string>
 		<key>event2</key>
-		<string>Madagascar\nEscape 2 Africa</string>
+		<string>Madagascar Escape 2 Africa</string>
 		<key>event3</key>
-		<string>Madagascar\nEurope&apos;s Most Wanted</string>
+		<string>Madagascar Europe&apos;s Most Wanted</string>
 		<key>event4</key>
 		<string>Penguins of Madagascar</string>
 		<key>infos</key>
@@ -59,7 +59,7 @@
 		<key>event1</key>
 		<string>Alvin and the Chipmunks</string>
 		<key>event2</key>
-		<string>Alvin and the Chipmunks\nThe Squeakquel</string>
+		<string>Alvin and the Chipmunks \n The Squeakquel</string>
 		<key>event3</key>
 		<string>Alvin and the Chipmunks\nChipwrecked</string>
 		<key>event4</key>
@@ -72,11 +72,11 @@
 		<key>event1</key>
 		<string>Mad Max</string>
 		<key>event2</key>
-		<string>Mad Max\nThe Road Warrior</string>
+		<string>Mad Max The Road Warrior</string>
 		<key>event3</key>
-		<string>Mad Max\nBeyond Thunderdome</string>
+		<string>Mad Max Beyond Thunderdome</string>
 		<key>event4</key>
-		<string>Mad Max\nFury Road</string>
+		<string>Mad Max Fury Road</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Mad_Max_(franchise)</string>
 	</dict>
@@ -85,24 +85,24 @@
 		<key>event1</key>
 		<string>Apocalypse</string>
 		<key>event2</key>
-		<string>Apocalypse\nRevelation</string>
+		<string>Apocalypse Revelation</string>
 		<key>event3</key>
-		<string>Apocalypse\nTribulation</string>
+		<string>Apocalypse Tribulation</string>
 		<key>event4</key>
-		<string>Apocalypse\nJudgment</string>
+		<string>Apocalypse Judgment</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Apocalypse_(film_series)</string>
 	</dict>
 	<key>Astérix &amp; Obélix</key>
 	<dict>
 		<key>event1</key>
-		<string>Astérix &amp; Obélix\nTake On Caesar</string>
+		<string>Astérix &amp; Obélix Take On Caesar</string>
 		<key>event2</key>
-		<string>Astérix &amp; Obélix\nMission Cleopatra</string>
+		<string>Astérix &amp; Obélix Mission Cleopatra</string>
 		<key>event3</key>
 		<string>Astérix at the Olympic Games</string>
 		<key>event4</key>
-		<string>Astérix &amp; Obélix\nGod Save Britannia</string>
+		<string>Astérix &amp; Obélix God Save Britannia</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Asterix_films_(live_action)</string>
 	</dict>
@@ -135,22 +135,22 @@
 	<key>P.R.O.B.E</key>
 	<dict>
 		<key>event1</key>
-		<string>P.R.O.B.E:\nThe Zero Imperative</string>
+		<string>P.R.O.B.E:  The Zero Imperative</string>
 		<key>event2</key>
-		<string>P.R.O.B.E:\nThe Devil of Winterborne</string>
+		<string>P.R.O.B.E: The Devil of Winterborne</string>
 		<key>event3</key>
-		<string>P.R.O.B.E:\nUnnatural Selection</string>
+		<string>P.R.O.B.E: Unnatural Selection</string>
 		<key>event4</key>
-		<string>P.R.O.B.E:\nGhost of Winterborne</string>
+		<string>P.R.O.B.E: Ghost of Winterborne</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/P.R.O.B.E.</string>
 	</dict>
 	<key>Rambo</key>
 	<dict>
 		<key>event1</key>
-		<string>Rambo\nFirst Blood</string>
+		<string>Rambo  First Blood</string>
 		<key>event2</key>
-		<string>Rambo\nFirst Blood Part II</string>
+		<string>Rambo First Blood Part II</string>
 		<key>event3</key>
 		<string>Rambo III</string>
 		<key>event4</key>
@@ -167,20 +167,20 @@
 		<key>event3</key>
 		<string>The Kion King 1 1/2</string>
 		<key>event4</key>
-		<string>The Lion Guard\nReturn of the Roar</string>
+		<string>The Lion Guard Return of the Roar</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/The_Lion_King_(franchise)</string>
 	</dict>
 	<key>Divergent</key>
 	<dict>
 		<key>event1</key>
-		<string>The Divergent Series:\nDivergent</string>
+		<string>The Divergent Series:  Divergent</string>
 		<key>event2</key>
-		<string>The Divergent Series:\nInsurgent</string>
+		<string>The Divergent Series: Insurgent</string>
 		<key>event3</key>
-		<string>The Divergent Series:\nAllegiant</string>
+		<string>The Divergent Series: Allegiant</string>
 		<key>event4</key>
-		<string>The Divergent Series:\nAscendant</string>
+		<string>The Divergent Series: Ascendant</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/The_Divergent_Series</string>
 	</dict>
@@ -189,24 +189,24 @@
 		<key>event1</key>
 		<string>Scooby-Doo</string>
 		<key>event2</key>
-		<string>Scobby-Doo\nMonsters Unleashed</string>
+		<string>Scobby-Doo  Monsters Unleashed</string>
 		<key>event3</key>
-		<string>Scobby-Doo!\nThe Mystery Begins</string>
+		<string>Scobby-Doo! The Mystery Begins</string>
 		<key>event4</key>
-		<string>Scobby-Doo!\nCurse of the Lake Monster</string>
+		<string>Scobby-Doo! Curse of the Lake Monster</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Scooby_Doo_(film_series)</string>
 	</dict>
 	<key>Dragon Ball</key>
 	<dict>
 		<key>event1</key>
-		<string>Dragon Ball\nCurse of the Blood Tubies</string>
+		<string>Dragon Ball  Curse of the Blood Tubies</string>
 		<key>event2</key>
-		<string>Dragon Ball\nSleeping Princess in Devil&apos;s Castle</string>
+		<string>Dragon Ball Sleeping Princess in Devil&apos;s Castle</string>
 		<key>event3</key>
-		<string>Dragon Ball\nMystical Adventure</string>
+		<string>Dragon Ball Mystical Adventure</string>
 		<key>event4</key>
-		<string>Dragon Ball\nThePath to Power</string>
+		<string>Dragon Ball ThePath to Power</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Dragon_Ball_(anime)</string>
 	</dict>
@@ -217,7 +217,7 @@
 		<key>event2</key>
 		<string>Evil Dead II</string>
 		<key>event3</key>
-		<string>Evil Dead\nArmy of Darkness</string>
+		<string>Evil Dead Army of Darkness</string>
 		<key>event4</key>
 		<string>Evil Dead</string>
 		<key>infos</key>
@@ -228,11 +228,11 @@
 		<key>event1</key>
 		<string>Spy Kids</string>
 		<key>event2</key>
-		<string>Spy Kids\nIsland of Lost</string>
+		<string>Spy Kids Island of Lost</string>
 		<key>event3</key>
-		<string>Spy Kids\nGame Over</string>
+		<string>Spy Kids Game Over</string>
 		<key>event4</key>
-		<string>Spy Kids\nAll the Time in the World</string>
+		<string>Spy Kids All the Time in the World</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Spy_Kids_(franchise)</string>
 	</dict>
@@ -241,24 +241,24 @@
 		<key>event1</key>
 		<string>Starship Troopers</string>
 		<key>event2</key>
-		<string>Starship Troopers\nHero of the Federation</string>
+		<string>Starship Troopers Hero of the Federation</string>
 		<key>event3</key>
-		<string>Starship Troopers\nMarauder</string>
+		<string>Starship Troopers Marauder</string>
 		<key>event4</key>
-		<string>Starship Troopers\nInvasion</string>
+		<string>Starship Troopers Invasion</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Starship_Troopers</string>
 	</dict>
 	<key>Futurama</key>
 	<dict>
 		<key>event1</key>
-		<string>Futurama\nBender&apos;s Big Score</string>
+		<string>Futurama Bender&apos;s Big Score</string>
 		<key>event2</key>
-		<string>Futurama\nThe Beast with a Billion Backs</string>
+		<string>Futurama The Beast with a Billion Backs</string>
 		<key>event3</key>
-		<string>Futurama\nBender&apos;s Game</string>
+		<string>Futurama Bender&apos;s Game</string>
 		<key>event4</key>
-		<string>Futurama\nInto the Wild Green Yonder</string>
+		<string>Futurama Into the Wild Green Yonder</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Futurama</string>
 	</dict>
@@ -280,37 +280,37 @@
 		<key>event1</key>
 		<string>The Hunger Games</string>
 		<key>event2</key>
-		<string>The Hunger Games\nCatching Fire</string>
+		<string>The Hunger Games Catching Fire</string>
 		<key>event3</key>
-		<string>The Hunger Games\nMockingjay</string>
+		<string>The Hunger Games Mockingjay</string>
 		<key>event4</key>
-		<string>The Hunger Games\nMockingjay Part 2</string>
+		<string>The Hunger Games Mockingjay Part 2</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/The_Hunger_Games_(film_series)</string>
 	</dict>
 	<key>Imperium</key>
 	<dict>
 		<key>event1</key>
-		<string>Imperium\nAugustus</string>
+		<string>Imperium Augustus</string>
 		<key>event2</key>
-		<string>Imperium\nNero</string>
+		<string>Imperium Nero</string>
 		<key>event3</key>
-		<string>Imperium\nSaint Peter</string>
+		<string>Imperium Saint Peter</string>
 		<key>event4</key>
-		<string>Imperium\nPompei</string>
+		<string>Imperium Pompei</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Imperium_(film)</string>
 	</dict>
 	<key>Indiana Jones</key>
 	<dict>
 		<key>event1</key>
-		<string>Indiana Jones\nRaiders of the Lost Ark</string>
+		<string>Indiana Jones Raiders of the Lost Ark</string>
 		<key>event2</key>
-		<string>Indiana Jones\nand the Temple of Doom</string>
+		<string>Indiana Jones and the Temple of Doom</string>
 		<key>event3</key>
-		<string>Indiana Jones\nand the Last Crusade</string>
+		<string>Indiana Jones and the Last Crusade</string>
 		<key>event4</key>
-		<string>Indiana Jones\nand the Kingdom of the Crystal Skull</string>
+		<string>Indiana Jones and the Kingdom of the Crystal Skull</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Indiana_Jones_(franchise)</string>
 	</dict>
@@ -319,11 +319,11 @@
 		<key>event1</key>
 		<string>The Amazing Adventures of Inspector Gadget</string>
 		<key>event2</key>
-		<string>Inspector Gadget\nGadget&apos;s Greatest Gadgets</string>
+		<string>Inspector Gadget Gadget&apos;s Greatest Gadgets</string>
 		<key>event3</key>
-		<string>Inspector Gadge Last Caset\nClaw&apos;s Revenge</string>
+		<string>Inspector Gadge Last Caset Claw&apos;s Revenge</string>
 		<key>event4</key>
-		<string>Inspector Gadget&apos;s Biggest Caper Ever\nThe Case Of The Giant Flying Lizard</string>
+		<string>Inspector Gadget&apos;s Biggest Caper Ever The Case Of The Giant Flying Lizard</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Indiana_Jones_(franchise)</string>
 	</dict>
@@ -332,11 +332,11 @@
 		<key>event1</key>
 		<string>Transformers</string>
 		<key>event2</key>
-		<string>Transformers\nRevenge of the Fallen</string>
+		<string>Transformers Revenge of the Fallen</string>
 		<key>event3</key>
-		<string>Transformers\nDark of the Moon</string>
+		<string>Transformers Dark of the Moon</string>
 		<key>event4</key>
-		<string>Transformers\nAge of Extinction</string>
+		<string>Transformers Age of Extinction</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Transformers_(film_series)</string>
 	</dict>
@@ -345,7 +345,7 @@
 		<key>event1</key>
 		<string>Jurassic Park</string>
 		<key>event2</key>
-		<string>Jurassic Park\nThe Lost World</string>
+		<string>Jurassic Park The Lost World</string>
 		<key>event3</key>
 		<string>Jurassic Park III</string>
 		<key>event4</key>

@@ -54,6 +54,10 @@ class ViewController: UIViewController {
     var randomIndexUsed = [Int]()
     var currentRound = Round()
     
+    var timer = 0
+    let timerSeconds = 3
+    var clock = NSTimer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -61,6 +65,7 @@ class ViewController: UIViewController {
         makeCornerRound(Viewradius: 5, buttonRadius: 15)
         laodAllSounds()
         selectInterface(.instruction)
+        timerLbl.text = "0:\(timerSeconds)"
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -86,6 +91,7 @@ class ViewController: UIViewController {
     func startNewGame(){
         currentRound = prepareNextRound()
         populateUIWithData(roudRandomized: currentRound)
+        selectInterface(.roundInProgress)
     }
     
     func prepareNextRound() -> Round{
@@ -96,7 +102,10 @@ class ViewController: UIViewController {
     }
     
     func populateUIWithData(roudRandomized round:Round){
-        
+        boxOneLabel.text = round.event1.title
+        boxTwoLabel.text = round.event2.title
+        boxThreeLabel.text = round.event3.title
+        boxFourLabel.text = round.event4.title
     }
     
     func tryLoadData(nameOfFile name:String, ofType type:String){
@@ -104,14 +113,35 @@ class ViewController: UIViewController {
             let dictionary = try PlistConverter.dictionaryFromFile(name, ofType: type)
             rounds = try EventUnarchiver.eventInventoryFromDictionary(dictionary)
             
-        } catch eventsError.ConversionError(let errorMessage) {
+        } catch EventsError.ConversionError(let errorMessage) {
             showAlert(errorMessage)
-        } catch eventsError.InvalidKey(let errorMessage) {
+        } catch EventsError.InvalidKey(let errorMessage) {
             showAlert(errorMessage)
-        } catch eventsError.InvalidResource(let errorMessage) {
+        } catch EventsError.InvalidResource(let errorMessage) {
             showAlert(errorMessage)
         } catch let error{
             showAlert("Unexptected Error", message: "\(error)")
+        }
+    }
+    
+    // MARK: Time Helper Methods
+    func countdown(seconds seconds: Int) {
+        timer = seconds
+        clock = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    func updateTimer(){
+        //Decrease the timer
+        timer -= 1
+        
+        //Update the timerLabel
+        timerLbl.text = "0:\(timer)"
+        
+        //If the timer reach zéro, display the correct ui and invalidate the timer.
+        if timer == 0{
+            clock.invalidate()
+            // FIXME: check if the order is correct instead
+            selectInterface(.roundResultFail)
         }
     }
     
@@ -194,18 +224,21 @@ class ViewController: UIViewController {
             hideResultUI(true)
             hideBoxes(false)
             bottomUIRoundInProgress(true)
+            countdown(seconds: timerSeconds)
         case .roundResultSuccess:
             hideResultUI(true)
             hideBoxes(false)
             nextRoundBtn.setImage(NextRoundImg.next_round_success.icon(), forState: .Normal)
             bottomUIRoundInProgress(false)
             playSound(correctSound)
+            clock.invalidate()
         case .roundResultFail:
             hideResultUI(true)
             hideBoxes(false)
             nextRoundBtn.setImage(NextRoundImg.next_round_fail.icon(), forState: .Normal)
             bottomUIRoundInProgress(false)
             playSound(failSound)
+            clock.invalidate()
         case .gameResult:
             yourScoreLbl.text = "Your Score"
             playAgainBtn.setTitle("Play Again", forState: .Normal)

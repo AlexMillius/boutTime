@@ -16,9 +16,10 @@ protocol RoundType {
     var event2:Event { get }
     var event3:Event { get }
     var event4:Event { get }
+    var infosLink:String { get }
     var currentCorrectOrder:[Event] { get }
     var currentRandomEvents:[Event] { get }
-    init (event1:Event, event2:Event, event3: Event, event4: Event)
+    init (event1:Event, event2:Event, event3: Event, event4: Event, infosLink:String)
     func mooveUpEvent(events:[Event]) -> [Event]
     func mooveDownEvent(events:[Event]) -> [Event]
     func checkIfCorrectOrder(proposition proposition:[Event], correct:[Event]) -> Bool
@@ -66,12 +67,14 @@ class Round:RoundType {
     var event2: Event
     var event3: Event
     var event4: Event
+    var infosLink: String
     var currentCorrectOrder: [Event]
-    required init (event1:Event = Event(), event2:Event = Event(), event3: Event = Event(), event4: Event = Event()){
+    required init (event1:Event = Event(), event2:Event = Event(), event3: Event = Event(), event4: Event = Event(), infosLink:String = ""){
         self.event1 = event1
         self.event2 = event2
         self.event3 = event3
         self.event4 = event4
+        self.infosLink = infosLink
         self.currentCorrectOrder = [self.event1,self.event2,self.event3,self.event4]
     }
     
@@ -149,14 +152,14 @@ class EventUnarchiver {
         var rounds = [RoundType]()
         
         for (_, value) in dictionary {
-            if let eventDict = value as? [String: String], let event1 = eventDict["event1"], let event2 = eventDict["event2"], let event3 = eventDict["event3"], let event4 = eventDict["event4"] {
+            if let eventDict = value as? [String: String], let event1 = eventDict["event1"], let event2 = eventDict["event2"], let event3 = eventDict["event3"], let event4 = eventDict["event4"], let infosLink = eventDict["infos"] {
                 
                 let firstEvent = Event(position: .First, title: event1)
                 let secondEvent = Event(position: .Second, title: event2)
                 let thirdEvent = Event(position: .Third, title: event3)
                 let fourthEvent = Event(position: .Fourth, title: event4)
                 
-                let round = Round(event1: firstEvent, event2: secondEvent, event3: thirdEvent, event4: fourthEvent)
+                let round = Round(event1: firstEvent, event2: secondEvent, event3: thirdEvent, event4: fourthEvent, infosLink: infosLink)
                 
                 rounds.append(round)
             } else {
