@@ -204,6 +204,9 @@
                                             <constraint firstAttribute="height" constant="50" id="xQQ-y4-IgT"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="next_round_success.png"/>
+                                        <connections>
+                                            <action selector="nextRoundTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="21D-k5-e4V"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZg-lR-qhb" userLabel="BottomInfoLabel">
                                         <rect key="frame" x="100" y="71" width="143" height="21"/>

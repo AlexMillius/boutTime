@@ -104,9 +104,14 @@ class Round:RoundType {
         return [Event]()
     }
     func checkIfCorrectOrder(proposition proposition:[Event], correct:[Event]) -> Bool {
-        
-        // TODO: implement code
-        return Bool()
+        for index in 0..<proposition.count {
+            print(proposition[index].position)
+            print(correct[index].position)
+            if proposition[index].position != correct[index].position {
+                return false
+            }
+        }
+        return true
     }
 }
 

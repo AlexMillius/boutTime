@@ -55,7 +55,10 @@ class ViewController: UIViewController {
     var currentRound = Round()
     
     var timer = 0
-    let timerSeconds = 3
+    let timerSeconds = 1
+    var numberOfRound = 0
+    let numberOfRoundMax = 6
+    var score = 0
     var clock = NSTimer()
     
     //var eventsInRandomOrder = [Event]()
@@ -93,7 +96,9 @@ class ViewController: UIViewController {
     //MARK: User interract with device
     
     @IBAction func playAgainTapped() {
-        startNewGame()
+        score = 0
+        numberOfRound = 0
+        nextRound()
     }
     
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
@@ -103,25 +108,41 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func nextRoundTapped() {
+        nextRound()
+    }
+    
+    
     //MARK: Helper Method
 
     func checkIfCorrect(){
         if currentRound.checkIfCorrectOrder(proposition: currentEvents.random, correct: currentEvents.ordered){
             //Correct
+            selectInterface(.roundResultSuccess)
         } else {
             //Incorrect
+            selectInterface(.roundResultFail)
         }
     }
     
-    func startNewGame(){
-        //get a random currentRound
-        currentRound = getRandomRound()
-        //extract the current events
-        getCurrentEvents(currentRound)
-        // populate the labels
-        populateUIWithData(currentEvents.random)
-        // Switch to the correct interface
-        selectInterface(.roundInProgres)
+    func nextRound(){
+        
+        if numberOfRound < numberOfRoundMax {
+            //Reinitialize the display of the countdown
+            timerLbl.text = "0:\(timerSeconds)"
+            //get a random currentRound
+            currentRound = getRandomRound()
+            //extract the current events
+            getCurrentEvents(currentRound)
+            // populate the labels
+            populateUIWithData(currentEvents.random)
+            // Switch to the correct interface
+            selectInterface(.roundInProgres)
+            //Increment The number of rounds
+            numberOfRound += 1
+        } else {
+            selectInterface(.gameResult)
+        }
     }
     
     func getRandomRound() -> Round{
@@ -176,8 +197,7 @@ class ViewController: UIViewController {
         //If the timer reach zéro, display the correct ui and invalidate the timer.
         if timer == 0{
             clock.invalidate()
-            // FIXME: check if the order is correct instead
-            selectInterface(.roundResultFail)
+            checkIfCorrect()
         }
     }
     
@@ -271,6 +291,7 @@ class ViewController: UIViewController {
             playSound(correctSound)
             clock.invalidate()
             userCanShake = false
+            score += 1
         case .roundResultFail:
             hideResultUI(true)
             hideBoxes(false)
@@ -281,6 +302,7 @@ class ViewController: UIViewController {
             userCanShake = false
         case .gameResult:
             yourScoreLbl.text = "Your Score"
+            scoreLbl.text = "\(score)/\(numberOfRoundMax)"
             playAgainBtn.setTitle("Play Again", forState: .Normal)
             hideResultUI(false)
             hideBoxes(true)
