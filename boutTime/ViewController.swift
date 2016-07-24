@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var yourScoreLbl: UILabel!
     @IBOutlet weak var scoreLbl: UILabel!
     
-    
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var nextRoundBtn: UIButton!
     @IBOutlet weak var playAgainBtn: UIButton!
@@ -45,6 +44,10 @@ class ViewController: UIViewController {
     var failSound:SystemSoundID = 0
     
     var rounds = [RoundType]()
+    let gameControll: BoutTimeGame
+    
+    let sourceFile = "Rounds"
+    let typeSourceFile = ".plist"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,13 +56,11 @@ class ViewController: UIViewController {
         makeCornerRound(Viewradius: 5, buttonRadius: 15)
         laodAllSounds()
         selectInterface(.instruction)
-        do {
-            let dictionary = try PlistConverter.dictionaryFromFile("Rounds", ofType: "plist")
-            rounds = try EventUnarchiver.eventInventoryFromDictionary(dictionary)
-            
-        }  catch let error {
-            fatalError("\(error)")
-        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        tryLoadData(nameOfFile: sourceFile, ofType: typeSourceFile)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,8 +70,37 @@ class ViewController: UIViewController {
 
 
     //MARK: - Helper Method
+    func tryLoadData(nameOfFile name:String, ofType type:String){
+        do {
+            let dictionary = try PlistConverter.dictionaryFromFile(name, ofType: type)
+            rounds = try EventUnarchiver.eventInventoryFromDictionary(dictionary)
+            
+        } catch eventsError.ConversionError(let errorMessage) {
+            showAlert(errorMessage)
+        } catch eventsError.InvalidKey(let errorMessage) {
+            showAlert(errorMessage)
+        } catch eventsError.InvalidResource(let errorMessage) {
+            showAlert(errorMessage)
+        } catch let error{
+            showAlert("Unexptected Error", message: "\(error)")
+        }
+    }
     
     //MARK: UI Helper
+    func showAlert(title: String, message: String? = nil, style: UIAlertControllerStyle = .Alert) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        
+        let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: dismissAlert)
+        
+        alertController.addAction(okAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func dismissAlert(sender: UIAlertAction) {
+        tryLoadData(nameOfFile: sourceFile, ofType: typeSourceFile)
+    }
+    
     func makeCornerRound(Viewradius radius:CGFloat, buttonRadius:CGFloat){
         boxOneView.layer.cornerRadius = radius
         boxTwoView.layer.cornerRadius = radius
@@ -128,7 +158,7 @@ class ViewController: UIViewController {
         case .instruction:
             //use the score Label and the play again button to display some instructions
             yourScoreLbl.text = "Welcome to the game\nClass the moovies in order of release\nYou have 60 seconds per round\nGood Luck!"
-            playAgainBtn.setTitle("Let's Go", forState: .Normal)
+            playAgainBtn.setTitle("Let's Go !", forState: .Normal)
             hideResultUI(false)
             hideBoxes(true)
         case .roundInProgress:
