@@ -18,7 +18,6 @@ protocol RoundType {
     var event4:Event { get }
     var infosLink:String { get }
     var currentCorrectOrder:[Event] { get }
-    var currentRandomEvents:[Event] { get }
     init (event1:Event, event2:Event, event3: Event, event4: Event, infosLink:String)
     func mooveUpEvent(events:[Event]) -> [Event]
     func mooveDownEvent(events:[Event]) -> [Event]
@@ -78,19 +77,22 @@ class Round:RoundType {
         self.currentCorrectOrder = [self.event1,self.event2,self.event3,self.event4]
     }
     
-    var currentRandomEvents: [Event] {
-        var tempPositions = currentCorrectOrder
-        var i = 0
-        while i < tempPositions.count{
-            // swap indexes (four time with this configuration)
-            let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound(tempPositions.count)
-            let currentPosition = tempPositions[i]
-            let randomPosition = tempPositions.removeAtIndex(randomIndex)
-            tempPositions.insert(currentPosition, atIndex: randomIndex)
-            tempPositions.insert(randomPosition, atIndex: i)
-            i += 1
+    func getEventsRandomized(events:[Event]) -> [Event] {
+        var tempEvents = events
+        // Randomize the events
+        for index in 0..<tempEvents.count {
+            
+            // Current event
+            let currentEvent = tempEvents[index]
+            
+            // Randomly choose another index
+            let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound(tempEvents.count)
+            
+            // Swap events at the two indexes
+            tempEvents[index] = tempEvents[randomIndex]
+            tempEvents[randomIndex] = currentEvent
         }
-        return tempPositions
+        return tempEvents
     }
     
     func mooveUpEvent(events:[Event]) -> [Event] {
@@ -120,7 +122,6 @@ class GameControl: BoutTimeGame {
         
         if rounds[currentIndex] is Round {
             let round = rounds[currentIndex] as! Round
-            print(round.event1)
             return (round,currentIndex)
         } else {
             return (Round(),currentIndex)

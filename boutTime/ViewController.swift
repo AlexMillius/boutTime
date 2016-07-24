@@ -58,6 +58,8 @@ class ViewController: UIViewController {
     let timerSeconds = 3
     var clock = NSTimer()
     
+    var eventsInRandomOrder = [Event]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -90,8 +92,8 @@ class ViewController: UIViewController {
     
     func startNewGame(){
         currentRound = prepareNextRound()
-        populateUIWithData(roudRandomized: currentRound)
-        selectInterface(.roundInProgress)
+        populateUIWithData(currentRound)
+        selectInterface(.roundInProgres)
     }
     
     func prepareNextRound() -> Round{
@@ -101,11 +103,12 @@ class ViewController: UIViewController {
         return roundWithInfo.round
     }
     
-    func populateUIWithData(roudRandomized round:Round){
-        boxOneLabel.text = round.event1.title
-        boxTwoLabel.text = round.event2.title
-        boxThreeLabel.text = round.event3.title
-        boxFourLabel.text = round.event4.title
+    func populateUIWithData(round:Round){
+        eventsInRandomOrder = round.getEventsRandomized(round.currentCorrectOrder)
+        boxOneLabel.text = eventsInRandomOrder[0].title
+        boxTwoLabel.text = eventsInRandomOrder[1].title
+        boxThreeLabel.text = eventsInRandomOrder[2].title
+        boxFourLabel.text = eventsInRandomOrder[3].title
     }
     
     func tryLoadData(nameOfFile name:String, ofType type:String){
@@ -193,7 +196,7 @@ class ViewController: UIViewController {
     
     enum Interfaces {
         case instruction
-        case roundInProgress
+        case roundInProgres
         case roundResultSuccess
         case roundResultFail
         case gameResult
@@ -220,7 +223,7 @@ class ViewController: UIViewController {
             playAgainBtn.setTitle("Let's Go !", forState: .Normal)
             hideResultUI(false)
             hideBoxes(true)
-        case .roundInProgress:
+        case .roundInProgres:
             hideResultUI(true)
             hideBoxes(false)
             bottomUIRoundInProgress(true)

@@ -59,11 +59,11 @@
 		<key>event1</key>
 		<string>Alvin and the Chipmunks</string>
 		<key>event2</key>
-		<string>Alvin and the Chipmunks \n The Squeakquel</string>
+		<string>Alvin and the Chipmunks The Squeakquel</string>
 		<key>event3</key>
-		<string>Alvin and the Chipmunks\nChipwrecked</string>
+		<string>Alvin and the Chipmunks Chipwrecked</string>
 		<key>event4</key>
-		<string>Alvin and the Chipmunks\nThe Road Chip</string>
+		<string>Alvin and the Chipmunks The Road Chip</string>
 		<key>infos</key>
 		<string>https://en.wikipedia.org/wiki/Alvin_and_the_Chipmunks_(film_series)</string>
 	</dict>
