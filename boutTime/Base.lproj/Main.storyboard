@@ -179,6 +179,9 @@
                                 <state key="normal" title="Play Again">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="playAgainTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="6nd-Yj-Qzq"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nay-fW-SOi" userLabel="Box Infos View">
                                 <rect key="frame" x="16" y="559" width="343" height="100"/>

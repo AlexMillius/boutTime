@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GameKit
 
 // MARK: Protocol
 protocol RoundType {
@@ -24,9 +25,7 @@ protocol RoundType {
 }
 
 protocol BoutTimeGame {
-    init (rounds:[Round])
-    var roundsInOrder:[Round] { get }
-    static func randomizeEvent(events:[Position]) -> [Position]
+    static func getRandomRound(lastIndexes:[Int], rounds:[RoundType]) -> (round:Round,randomIndex:Int)
 }
 
 // MARK: Error Type
@@ -95,7 +94,7 @@ class Round:RoundType {
     var event3: Position
     var event4: Position
     var currentCorrectOrder: [Position]
-    required init (event1:Position, event2:Position, event3: Position, event4: Position){
+    required init (event1:Position = Position.First(""), event2:Position = Position.Second(""), event3: Position = Position.Third(""), event4: Position = Position.Fourth("")){
         self.event1 = event1
         self.event2 = event2
         self.event3 = event3
@@ -124,14 +123,22 @@ class Round:RoundType {
 }
 
 class GameControl: BoutTimeGame {
-    let roundsInOrder:[Round]
-    required init (rounds:[Round]) {
-        self.roundsInOrder = rounds
-    }
     
-    class func randomizeEvent(events: [Position]) -> [Position] {
-        // TODO: implement randomizer
-        return [Position]()
+    class func getRandomRound(lastIndexes:[Int], rounds:[RoundType]) -> (round:Round,randomIndex:Int) {
+        var currentIndex = Int()
+        
+        //While the currentIndex as already been used, generate a new random index
+        repeat {
+            currentIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound(rounds.count)
+        }while lastIndexes.contains(currentIndex)
+        
+        if rounds[currentIndex] is Round {
+            let round = rounds[currentIndex] as! Round
+            print(round.event1)
+            return (round,currentIndex)
+        } else {
+            return (Round(),currentIndex)
+        }
     }
 }
 

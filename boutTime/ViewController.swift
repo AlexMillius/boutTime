@@ -27,13 +27,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var playAgainBtn: UIButton!
     @IBOutlet weak var infoBtn: UIButton!
     
-    
     @IBOutlet weak var boxOneHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var boxTwoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var boxFourHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var boxThreeHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var boxInfoHeightConstraint: NSLayoutConstraint!
-    
     
     @IBOutlet weak var boxTwoUpArrowHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var boxTwoDownArrowHeightConstraint: NSLayoutConstraint!
@@ -44,10 +42,12 @@ class ViewController: UIViewController {
     var failSound:SystemSoundID = 0
     
     var rounds = [RoundType]()
-    let gameControll: BoutTimeGame
     
     let sourceFile = "Rounds"
     let typeSourceFile = ".plist"
+    
+    var randomIndexUsed = [Int]()
+    var currentRound = Round()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,6 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         tryLoadData(nameOfFile: sourceFile, ofType: typeSourceFile)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,6 +69,24 @@ class ViewController: UIViewController {
 
 
     //MARK: - Helper Method
+    
+    //MARK: button Tapped
+    
+    @IBAction func playAgainTapped() {
+        startNewGame()
+    }
+    
+    func startNewGame(){
+        prepareNextRound()
+    }
+    
+    func prepareNextRound(){
+        //Get a random Round
+        let roundWithInfo = GameControl.getRandomRound(randomIndexUsed, rounds: rounds)
+        randomIndexUsed.append(roundWithInfo.randomIndex)
+        currentRound = roundWithInfo.round
+    }
+    
     func tryLoadData(nameOfFile name:String, ofType type:String){
         do {
             let dictionary = try PlistConverter.dictionaryFromFile(name, ofType: type)
