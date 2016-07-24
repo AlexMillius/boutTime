@@ -58,7 +58,10 @@ class ViewController: UIViewController {
     let timerSeconds = 3
     var clock = NSTimer()
     
-    var eventsInRandomOrder = [Event]()
+    //var eventsInRandomOrder = [Event]()
+    var currentEvents = (random:[Event](),ordered:[Event]())
+    
+    var userCanShake = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +73,13 @@ class ViewController: UIViewController {
         timerLbl.text = "0:\(timerSeconds)"
     }
     
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
     override func viewDidAppear(animated: Bool) {
         tryLoadData(nameOfFile: sourceFile, ofType: typeSourceFile)
+        becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,27 +96,52 @@ class ViewController: UIViewController {
         startNewGame()
     }
     
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if (motion == UIEventSubtype.MotionShake &&  userCanShake) {
+            // User was shaking the device.
+            checkIfCorrect()
+        }
+    }
+    
     //MARK: Helper Method
+
+    func checkIfCorrect(){
+        if currentRound.checkIfCorrectOrder(proposition: currentEvents.random, correct: currentEvents.ordered){
+            //Correct
+        } else {
+            //Incorrect
+        }
+    }
     
     func startNewGame(){
-        currentRound = prepareNextRound()
-        populateUIWithData(currentRound)
+        //get a random currentRound
+        currentRound = getRandomRound()
+        //extract the current events
+        getCurrentEvents(currentRound)
+        // populate the labels
+        populateUIWithData(currentEvents.random)
+        // Switch to the correct interface
         selectInterface(.roundInProgres)
     }
     
-    func prepareNextRound() -> Round{
+    func getRandomRound() -> Round{
         //Get a random Round
         let roundWithInfo = GameControl.getRandomRound(randomIndexUsed, rounds: rounds)
         randomIndexUsed.append(roundWithInfo.randomIndex)
         return roundWithInfo.round
     }
     
-    func populateUIWithData(round:Round){
-        eventsInRandomOrder = round.getEventsRandomized(round.currentCorrectOrder)
-        boxOneLabel.text = eventsInRandomOrder[0].title
-        boxTwoLabel.text = eventsInRandomOrder[1].title
-        boxThreeLabel.text = eventsInRandomOrder[2].title
-        boxFourLabel.text = eventsInRandomOrder[3].title
+    func getCurrentEvents(round:Round){
+        currentEvents.ordered = round.currentCorrectOrder
+        currentEvents.random = round.getEventsRandomized(round.currentCorrectOrder)
+    }
+    
+    func populateUIWithData(events:[Event]){
+        //eventsInRandomOrder = round.getEventsRandomized(round.currentCorrectOrder)
+        boxOneLabel.text = events[0].title
+        boxTwoLabel.text = events[1].title
+        boxThreeLabel.text = events[2].title
+        boxFourLabel.text = events[3].title
     }
     
     func tryLoadData(nameOfFile name:String, ofType type:String){
@@ -223,11 +256,13 @@ class ViewController: UIViewController {
             playAgainBtn.setTitle("Let's Go !", forState: .Normal)
             hideResultUI(false)
             hideBoxes(true)
+            userCanShake = false
         case .roundInProgres:
             hideResultUI(true)
             hideBoxes(false)
             bottomUIRoundInProgress(true)
             countdown(seconds: timerSeconds)
+            userCanShake = true
         case .roundResultSuccess:
             hideResultUI(true)
             hideBoxes(false)
@@ -235,6 +270,7 @@ class ViewController: UIViewController {
             bottomUIRoundInProgress(false)
             playSound(correctSound)
             clock.invalidate()
+            userCanShake = false
         case .roundResultFail:
             hideResultUI(true)
             hideBoxes(false)
@@ -242,12 +278,14 @@ class ViewController: UIViewController {
             bottomUIRoundInProgress(false)
             playSound(failSound)
             clock.invalidate()
+            userCanShake = false
         case .gameResult:
             yourScoreLbl.text = "Your Score"
             playAgainBtn.setTitle("Play Again", forState: .Normal)
             hideResultUI(false)
             hideBoxes(true)
             bottomUIRoundInProgress(true)
+            userCanShake = false
         }
     }
     
@@ -294,6 +332,18 @@ class ViewController: UIViewController {
     
     func playSound(soundId:SystemSoundID) {
         AudioServicesPlaySystemSound(soundId)
+    }
+    
+    // MARK: - Navigation
+     
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController is InfosViewController {
+            let destinationVC = segue.destinationViewController as! InfosViewController
+            destinationVC.url = currentRound.infosLink
+        }
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
 }
 

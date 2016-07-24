@@ -218,6 +218,9 @@
                                             <constraint firstAttribute="height" constant="50" id="plm-zd-abw"/>
                                         </constraints>
                                         <state key="normal" image="info.png"/>
+                                        <connections>
+                                            <segue destination="Zhj-xo-Dym" kind="presentation" id="2vd-hc-Zsd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -233,7 +236,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.15195826480263158" blue="0.30756578947368424" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.15294117647058825" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Nay-fW-SOi" secondAttribute="trailing" id="4gl-VK-31M"/>
                             <constraint firstItem="FCk-rt-hAe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="54b-xo-F89"/>
@@ -295,6 +298,53 @@
             </objects>
             <point key="canvasLocation" x="287.5" y="333.5"/>
         </scene>
+        <!--Infos View Controller-->
+        <scene sceneID="aBB-Fi-BKN">
+            <objects>
+                <viewController id="Zhj-xo-Dym" customClass="InfosViewController" customModule="boutTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Og2-at-IE8"/>
+                        <viewControllerLayoutGuide type="bottom" id="yoJ-Mh-Wui"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9jp-Wc-hJY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26y-fz-UjA">
+                                <rect key="frame" x="0.0" y="20" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Kk9-af-zAH"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="webview_bar.png"/>
+                                <connections>
+                                    <action selector="exitButtonTapped" destination="Zhj-xo-Dym" eventType="touchUpInside" id="YzT-zZ-DJM"/>
+                                </connections>
+                            </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wr-A7-HXA">
+                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0wr-A7-HXA" firstAttribute="leading" secondItem="9jp-Wc-hJY" secondAttribute="leading" id="DZP-2T-fts"/>
+                            <constraint firstAttribute="trailing" secondItem="0wr-A7-HXA" secondAttribute="trailing" id="FsJ-JO-tx7"/>
+                            <constraint firstItem="0wr-A7-HXA" firstAttribute="top" secondItem="26y-fz-UjA" secondAttribute="bottom" id="K2Q-46-2Sh"/>
+                            <constraint firstAttribute="trailing" secondItem="26y-fz-UjA" secondAttribute="trailing" id="Nlt-ao-vho"/>
+                            <constraint firstItem="26y-fz-UjA" firstAttribute="leading" secondItem="9jp-Wc-hJY" secondAttribute="leading" id="jny-Fu-n5S"/>
+                            <constraint firstItem="26y-fz-UjA" firstAttribute="top" secondItem="Og2-at-IE8" secondAttribute="bottom" id="wbc-pg-6S3"/>
+                            <constraint firstAttribute="bottom" secondItem="0wr-A7-HXA" secondAttribute="bottom" id="ypf-W8-9ul"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="infosWebView" destination="0wr-A7-HXA" id="MwE-R9-dQi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWd-ub-DKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="769.5" y="333.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="down_full.png" width="158" height="457"/>
@@ -304,5 +354,6 @@
         <image name="next_round_success.png" width="558" height="142"/>
         <image name="up_full.png" width="158" height="457"/>
         <image name="up_half.png" width="158" height="229"/>
+        <image name="webview_bar.png" width="1333" height="167"/>
     </resources>
 </document>
