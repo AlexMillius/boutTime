@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCk-rt-hAe">
                                 <rect key="frame" x="16" y="28" width="343" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roZ-JP-K57" userLabel="infoLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roZ-JP-K57" userLabel="infoLabel">
                                         <rect key="frame" x="20" y="39" width="253" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.37647058823529411" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,7 +49,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIj-0E-GCc" userLabel="Box Two View">
                                 <rect key="frame" x="16" y="143" width="343" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHW-ry-o4m" userLabel="infoLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHW-ry-o4m" userLabel="infoLabel">
                                         <rect key="frame" x="20" y="39" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.37647058823529411" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,7 +86,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qi7-56-A7j" userLabel="Box Three View">
                                 <rect key="frame" x="16" y="258" width="343" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggs-IO-P0c" userLabel="infoLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggs-IO-P0c" userLabel="infoLabel">
                                         <rect key="frame" x="20" y="39" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.37647058823529411" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
@@ -123,7 +123,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3i-8n-T5n" userLabel="Box Four View">
                                 <rect key="frame" x="16" y="373" width="343" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob9-d3-ecS" userLabel="infoLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob9-d3-ecS" userLabel="infoLabel">
                                         <rect key="frame" x="20" y="39" width="253" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.37647058823529411" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
@@ -148,15 +148,15 @@
                                     <constraint firstItem="ob9-d3-ecS" firstAttribute="leading" secondItem="m3i-8n-T5n" secondAttribute="leading" constant="20" id="zgb-sa-wDT"/>
                                 </constraints>
                             </view>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gameLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-FH-zc3">
-                                <rect key="frame" x="138" y="185" width="100" height="100"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="gameLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-FH-zc3">
+                                <rect key="frame" x="111" y="136" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Hm3-KK-Hij"/>
                                     <constraint firstAttribute="width" constant="100" id="NB8-0x-IbG"/>
                                 </constraints>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWT-C0-Pjr" userLabel="your score lbl">
-                                <rect key="frame" x="43" y="305" width="290" height="21"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your Score" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWT-C0-Pjr" userLabel="your score lbl">
+                                <rect key="frame" x="16" y="256" width="290" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="zaz-td-hVE"/>
                                 </constraints>
@@ -164,14 +164,14 @@
                                 <color key="textColor" red="0.0" green="0.56653474510000001" blue="0.72897820719999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qK-DV-KD8" userLabel="score lbl">
-                                <rect key="frame" x="188" y="334" width="0.0" height="0.0"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qK-DV-KD8" userLabel="score lbl">
+                                <rect key="frame" x="161" y="285" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-Qv-soZ" userLabel="Play again btn">
-                                <rect key="frame" x="133" y="354" width="110" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-Qv-soZ" userLabel="Play again btn">
+                                <rect key="frame" x="106" y="305" width="110" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.56470588235294117" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="B3y-X4-SqM"/>
@@ -186,8 +186,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nay-fW-SOi" userLabel="Box Infos View">
                                 <rect key="frame" x="16" y="559" width="343" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 : 60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYW-qZ-cMX" userLabel="TimerLabel">
-                                        <rect key="frame" x="123" y="8" width="97" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0 : 60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYW-qZ-cMX" userLabel="TimerLabel">
+                                        <rect key="frame" x="124" y="8" width="97" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="U83-lZ-ndh"/>
                                         </constraints>
@@ -196,21 +196,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHN-vF-P8Q" userLabel="Next Round Btn">
-                                        <rect key="frame" x="81" y="8" width="180" height="50"/>
+                                        <rect key="frame" x="82" y="8" width="180" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="5Db-sl-ITc"/>
                                             <constraint firstAttribute="height" constant="50" id="xQQ-y4-IgT"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="next_round_success.png"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZg-lR-qhb" userLabel="BottomInfoLabel">
-                                        <rect key="frame" x="100" y="71" width="143" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Shake to complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZg-lR-qhb" userLabel="BottomInfoLabel">
+                                        <rect key="frame" x="101" y="71" width="143" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.56653474506578949" blue="0.72897820723684215" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AO6-z8-gSu">
-                                        <rect key="frame" x="271" y="8" width="50" height="50"/>
+                                        <rect key="frame" x="272" y="8" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="kiA-6C-xyx"/>
                                             <constraint firstAttribute="height" constant="50" id="plm-zd-abw"/>
@@ -263,17 +263,21 @@
                     <connections>
                         <outlet property="bottomInfoLbl" destination="PZg-lR-qhb" id="8LG-rE-qxd"/>
                         <outlet property="boxFourHeightConstraint" destination="MvQ-lx-OjV" id="rKi-aX-UJw"/>
+                        <outlet property="boxFourLabel" destination="ob9-d3-ecS" id="jkw-lC-0Sr"/>
                         <outlet property="boxFourView" destination="m3i-8n-T5n" id="VRN-4g-tVq"/>
                         <outlet property="boxInfoHeightConstraint" destination="5bc-sa-Yz2" id="EVb-5O-9aY"/>
                         <outlet property="boxInfosView" destination="Nay-fW-SOi" id="Dzz-T4-axi"/>
                         <outlet property="boxOneHeightConstraint" destination="O3Z-wG-gJx" id="ETH-aE-Ma5"/>
+                        <outlet property="boxOneLabel" destination="roZ-JP-K57" id="ZSx-vh-d3e"/>
                         <outlet property="boxOneView" destination="FCk-rt-hAe" id="dYk-Sl-REz"/>
                         <outlet property="boxThreeDownArrowConstraint" destination="oUh-GW-g0e" id="kqD-3F-Di5"/>
                         <outlet property="boxThreeHeightConstraint" destination="XRh-Ya-NWC" id="6sd-v6-H7m"/>
+                        <outlet property="boxThreeLabel" destination="Ggs-IO-P0c" id="c24-dU-dkp"/>
                         <outlet property="boxThreeUpArrowConstraint" destination="WOF-wp-5Eu" id="5V2-OM-Vaf"/>
                         <outlet property="boxThreeView" destination="Qi7-56-A7j" id="RnM-ey-ktN"/>
                         <outlet property="boxTwoDownArrowHeightConstraint" destination="Btc-1p-W6r" id="uyP-Jf-BU4"/>
                         <outlet property="boxTwoHeightConstraint" destination="0pU-os-Zmp" id="U8w-5s-WjI"/>
+                        <outlet property="boxTwoLabel" destination="pHW-ry-o4m" id="fWe-vX-8zg"/>
                         <outlet property="boxTwoUpArrowHeightConstraint" destination="PTm-Kp-lMA" id="zHD-w7-WQT"/>
                         <outlet property="boxTwoView" destination="NIj-0E-GCc" id="wTv-UX-nRd"/>
                         <outlet property="infoBtn" destination="AO6-z8-gSu" id="qeI-pY-bUf"/>

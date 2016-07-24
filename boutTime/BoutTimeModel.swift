@@ -12,89 +12,62 @@ import GameKit
 
 // MARK: Protocol
 protocol RoundType {
-    var event1:Position { get }
-    var event2:Position { get }
-    var event3:Position { get }
-    var event4:Position { get }
-    var currentCorrectOrder:[Position] { get }
-    var currentRandomEvents:[Position] { get }
-    init (event1:Position, event2:Position, event3: Position, event4: Position)
-    func mooveUpEvent(events:[Position]) -> [Position]
-    func mooveDownEvent(events:[Position]) -> [Position]
-    func checkIfCorrectOrder(proposition proposition:[Position], correct:[Position]) -> Bool
+    var event1:Event { get }
+    var event2:Event { get }
+    var event3:Event { get }
+    var event4:Event { get }
+    var currentCorrectOrder:[Event] { get }
+    var currentRandomEvents:[Event] { get }
+    init (event1:Event, event2:Event, event3: Event, event4: Event)
+    func mooveUpEvent(events:[Event]) -> [Event]
+    func mooveDownEvent(events:[Event]) -> [Event]
+    func checkIfCorrectOrder(proposition proposition:[Event], correct:[Event]) -> Bool
 }
 
 protocol BoutTimeGame {
     static func getRandomRound(lastIndexes:[Int], rounds:[RoundType]) -> (round:Round,randomIndex:Int)
 }
 
+protocol EventType {
+    var position:PositionEvents { get }
+    var title:String { get }
+    init (position:PositionEvents, title:String)
+}
+
 // MARK: Error Type
 
-enum eventsError: ErrorType {
+enum EventsError: ErrorType {
     case InvalidResource(String)
     case ConversionError(String)
     case InvalidKey(String)
 }
 
-// - Helper
+// MARK: objects
 
-enum Position {
-    case First(String)
-    case Second(String)
-    case Third(String)
-    case Fourth(String)
+enum PositionEvents {
+    case First
+    case Second
+    case Third
+    case Fourth
 }
 
-//MARK: Converter
-
-class PlistConverter {
-    class func dictionaryFromFile(resource: String, ofType type: String) throws -> [String : AnyObject] {
-        
-        guard let path = NSBundle.mainBundle().pathForResource(resource, ofType: type) else {
-            throw eventsError.InvalidResource("Invalid Ressource")
-        }
-        
-        guard let Dictionary = NSDictionary(contentsOfFile: path), let castDictionary = Dictionary as? [String: AnyObject] else {
-            throw eventsError.ConversionError("Conversion Error")
-        }
-        
-        return castDictionary
+struct Event:EventType {
+    let position: PositionEvents
+    let title: String
+    
+    init (position:PositionEvents = PositionEvents.First, title:String = "empty"){
+        self.position = position
+        self.title = title
     }
 }
-
-class EventUnarchiver {
-    class func eventInventoryFromDictionary(dictionary: [String: AnyObject]) throws -> [RoundType] {
-        
-        var rounds = [RoundType]()
-        
-        for (_, value) in dictionary {
-            if let eventDict = value as? [String: String], let event1 = eventDict["event1"], let event2 = eventDict["event2"], let event3 = eventDict["event3"], let event4 = eventDict["event4"] {
-                
-                let firstEvent = Position.First(event1)
-                let secondEvent = Position.Second(event2)
-                let thirdEvent = Position.Third(event3)
-                let fourthEvent = Position.Fourth(event4)
-                
-                let round = Round(event1: firstEvent, event2: secondEvent, event3: thirdEvent, event4: fourthEvent)
-                
-                rounds.append(round)
-            } else {
-                throw eventsError.InvalidKey("Invalid Key")
-            }
-        }
-        
-        return rounds
-    }
-}
-
 
 class Round:RoundType {
-    var event1: Position
-    var event2: Position
-    var event3: Position
-    var event4: Position
-    var currentCorrectOrder: [Position]
-    required init (event1:Position = Position.First(""), event2:Position = Position.Second(""), event3: Position = Position.Third(""), event4: Position = Position.Fourth("")){
+    var event1: Event
+    var event2: Event
+    var event3: Event
+    var event4: Event
+    var currentCorrectOrder: [Event]
+    required init (event1:Event = Event(), event2:Event = Event(), event3: Event = Event(), event4: Event = Event()){
         self.event1 = event1
         self.event2 = event2
         self.event3 = event3
@@ -102,20 +75,30 @@ class Round:RoundType {
         self.currentCorrectOrder = [self.event1,self.event2,self.event3,self.event4]
     }
     
-    var currentRandomEvents: [Position] {
-        // TODO: implement code
-        return [Position]()
+    var currentRandomEvents: [Event] {
+        var tempPositions = currentCorrectOrder
+        var i = 0
+        while i < tempPositions.count{
+            // swap indexes (four time with this configuration)
+            let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound(tempPositions.count)
+            let currentPosition = tempPositions[i]
+            let randomPosition = tempPositions.removeAtIndex(randomIndex)
+            tempPositions.insert(currentPosition, atIndex: randomIndex)
+            tempPositions.insert(randomPosition, atIndex: i)
+            i += 1
+        }
+        return tempPositions
     }
     
-    func mooveUpEvent(events:[Position]) -> [Position] {
+    func mooveUpEvent(events:[Event]) -> [Event] {
         // TODO: implement code
-        return [Position]()
+        return [Event]()
     }
-    func mooveDownEvent(events:[Position]) -> [Position] {
+    func mooveDownEvent(events:[Event]) -> [Event] {
         // TODO: implement code
-        return [Position]()
+        return [Event]()
     }
-    func checkIfCorrectOrder(proposition proposition:[Position], correct:[Position]) -> Bool {
+    func checkIfCorrectOrder(proposition proposition:[Event], correct:[Event]) -> Bool {
         
         // TODO: implement code
         return Bool()
@@ -143,7 +126,47 @@ class GameControl: BoutTimeGame {
 }
 
 
+//MARK: Converter
 
+class PlistConverter {
+    class func dictionaryFromFile(resource: String, ofType type: String) throws -> [String : AnyObject] {
+        
+        guard let path = NSBundle.mainBundle().pathForResource(resource, ofType: type) else {
+            throw EventsError.InvalidResource("Invalid Ressource")
+        }
+        
+        guard let Dictionary = NSDictionary(contentsOfFile: path), let castDictionary = Dictionary as? [String: AnyObject] else {
+            throw EventsError.ConversionError("Conversion Error")
+        }
+        
+        return castDictionary
+    }
+}
+
+class EventUnarchiver {
+    class func eventInventoryFromDictionary(dictionary: [String: AnyObject]) throws -> [RoundType] {
+        
+        var rounds = [RoundType]()
+        
+        for (_, value) in dictionary {
+            if let eventDict = value as? [String: String], let event1 = eventDict["event1"], let event2 = eventDict["event2"], let event3 = eventDict["event3"], let event4 = eventDict["event4"] {
+                
+                let firstEvent = Event(position: .First, title: event1)
+                let secondEvent = Event(position: .Second, title: event2)
+                let thirdEvent = Event(position: .Third, title: event3)
+                let fourthEvent = Event(position: .Fourth, title: event4)
+                
+                let round = Round(event1: firstEvent, event2: secondEvent, event3: thirdEvent, event4: fourthEvent)
+                
+                rounds.append(round)
+            } else {
+                throw EventsError.InvalidKey("Invalid Key")
+            }
+        }
+        
+        return rounds
+    }
+}
 
 
 

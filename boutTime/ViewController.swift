@@ -17,6 +17,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var boxFourView: UIView!
     @IBOutlet weak var boxInfosView: UIView!
     
+    @IBOutlet weak var boxOneLabel: UILabel!
+    @IBOutlet weak var boxTwoLabel: UILabel!
+    @IBOutlet weak var boxThreeLabel: UILabel!
+    @IBOutlet weak var boxFourLabel: UILabel!
+    
     @IBOutlet weak var bottomInfoLbl: UILabel!
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var yourScoreLbl: UILabel!
@@ -68,23 +73,30 @@ class ViewController: UIViewController {
     }
 
 
-    //MARK: - Helper Method
+    //MARK: - Helper
     
-    //MARK: button Tapped
+    //MARK: User interract with device
     
     @IBAction func playAgainTapped() {
         startNewGame()
     }
     
+    //MARK: Helper Method
+    
     func startNewGame(){
-        prepareNextRound()
+        currentRound = prepareNextRound()
+        populateUIWithData(roudRandomized: currentRound)
     }
     
-    func prepareNextRound(){
+    func prepareNextRound() -> Round{
         //Get a random Round
         let roundWithInfo = GameControl.getRandomRound(randomIndexUsed, rounds: rounds)
         randomIndexUsed.append(roundWithInfo.randomIndex)
-        currentRound = roundWithInfo.round
+        return roundWithInfo.round
+    }
+    
+    func populateUIWithData(roudRandomized round:Round){
+        
     }
     
     func tryLoadData(nameOfFile name:String, ofType type:String){
