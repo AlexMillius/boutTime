@@ -19,8 +19,7 @@ protocol RoundType {
     var infosLink:String { get }
     var currentCorrectOrder:[Event] { get }
     init (event1:Event, event2:Event, event3: Event, event4: Event, infosLink:String)
-    func mooveUpEvent(events:[Event]) -> [Event]
-    func mooveDownEvent(events:[Event]) -> [Event]
+    static func mooveEvent(inout events:[Event],buttonTag:Int)
     func checkIfCorrectOrder(proposition proposition:[Event], correct:[Event]) -> Bool
 }
 
@@ -80,31 +79,47 @@ class Round:RoundType {
     func getEventsRandomized(events:[Event]) -> [Event] {
         var tempEvents = events
         // Randomize the events
-        for index in 0..<tempEvents.count {
-            
-            // Current event
-            let currentEvent = tempEvents[index]
-            
-            // Randomly choose another index
-            let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound(tempEvents.count)
-            
-            // Swap events at the two indexes
-            tempEvents[index] = tempEvents[randomIndex]
-            tempEvents[randomIndex] = currentEvent
-        }
+        repeat {
+            for index in 0..<tempEvents.count {
+                
+                // Current event
+                let currentEvent = tempEvents[index]
+                
+                // Randomly choose another index
+                let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound(tempEvents.count)
+                
+                // Swap events at the two indexes
+                tempEvents[index] = tempEvents[randomIndex]
+                tempEvents[randomIndex] = currentEvent
+            }
+        } while checkIfCorrectOrder(proposition: tempEvents, correct: events)
         return tempEvents
     }
     
-    func mooveUpEvent(events:[Event]) -> [Event] {
-        // TODO: implement code
-        return [Event]()
+    class func mooveEvent(inout events:[Event],buttonTag:Int) {
+        //Arrow buttons are tagged from top to bottom; from 1 to 6
+        // 1-3-5 are down button
+        // 2-4-6 are up button
+        func swapEvent(index1:Int,_ index2:Int){
+            let currentEvent = events[index1]
+            events[index1] = events[index2]
+            events[index2] = currentEvent
+        }
+        switch buttonTag {
+        case 1: swapEvent(0, 1)
+        case 2: swapEvent(0, 1)
+        case 3: swapEvent(1, 2)
+        case 4: swapEvent(1, 2)
+        case 5: swapEvent(2, 3)
+        case 6: swapEvent(2, 3)
+        default: break
+        }
     }
-    func mooveDownEvent(events:[Event]) -> [Event] {
-        // TODO: implement code
-        return [Event]()
-    }
+    
+    
     func checkIfCorrectOrder(proposition proposition:[Event], correct:[Event]) -> Bool {
         for index in 0..<proposition.count {
+            //TODO: delete print
             print(proposition[index].position)
             print(correct[index].position)
             if proposition[index].position != correct[index].position {

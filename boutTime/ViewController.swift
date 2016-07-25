@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     var currentRound = Round()
     
     var timer = 0
-    let timerSeconds = 1
+    let timerSeconds = 60
     var numberOfRound = 0
     let numberOfRoundMax = 6
     var score = 0
@@ -111,6 +111,15 @@ class ViewController: UIViewController {
     @IBAction func nextRoundTapped() {
         nextRound()
     }
+    
+    //Arrow buttons are tagged from top to bottom; from 1 to 6
+    // 1-3-5 are down button
+    // 2-4-6 are up button
+    @IBAction func mooveEventTapped(sender: UIButton) {
+        Round.mooveEvent(&currentEvents.random, buttonTag: sender.tag)
+        populateUIWithData(currentEvents.random)
+    }
+    
     
     
     //MARK: Helper Method
@@ -192,7 +201,11 @@ class ViewController: UIViewController {
         timer -= 1
         
         //Update the timerLabel
-        timerLbl.text = "0:\(timer)"
+        if timer < 10 {
+            timerLbl.text = "0:0\(timer)"
+        } else {
+            timerLbl.text = "0:\(timer)"
+        }
         
         //If the timer reach zéro, display the correct ui and invalidate the timer.
         if timer == 0{
