@@ -45,13 +45,16 @@ class ViewController: UIViewController {
     
     var correctSound:SystemSoundID = 0
     var failSound:SystemSoundID = 0
-    
-    var rounds = [RoundType]()
+    var clickSound:SystemSoundID = 0
+    var resultSound:SystemSoundID = 0
+    var goSound:SystemSoundID = 0
+    var welcomeSound:SystemSoundID = 0
     
     let sourceFile = "Rounds"
     let typeSourceFile = ".plist"
     
     var randomIndexUsed = [Int]()
+    var rounds = [RoundType]()
     var currentRound = Round()
     
     var timer = 0
@@ -60,9 +63,8 @@ class ViewController: UIViewController {
     let numberOfRoundMax = 6
     var score = 0
     var clock = NSTimer()
-    
-    //var eventsInRandomOrder = [Event]()
-    var currentEvents = (random:[Event](),ordered:[Event]())
+
+    var currentEvents = (unordered:[Event](),ordered:[Event]())
     
     var userCanShake = false
     
@@ -76,6 +78,7 @@ class ViewController: UIViewController {
         timerLbl.text = "0:\(timerSeconds)"
     }
     
+    //Used for detect a shake of the device
     override func canBecomeFirstResponder() -> Bool {
         return true
     }
@@ -90,17 +93,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
-    //MARK: - Helper
-    
-    //MARK: User interract with device
-    
+    //MARK: - User interract with device
     @IBAction func playAgainTapped() {
         score = 0
         numberOfRound = 0
         nextRound()
     }
     
+    //Shake
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if (motion == UIEventSubtype.MotionShake &&  userCanShake) {
             // User was shaking the device.
@@ -112,20 +112,17 @@ class ViewController: UIViewController {
         nextRound()
     }
     
-    //Arrow buttons are tagged from top to bottom; from 1 to 6
-    // 1-3-5 are down button
-    // 2-4-6 are up button
+    //Arrow buttons are tagged from top to bottom
+    //The arrows who swap the same two labels are tagged the same
     @IBAction func mooveEventTapped(sender: UIButton) {
-        Round.mooveEvent(&currentEvents.random, buttonTag: sender.tag)
-        populateUIWithData(currentEvents.random)
+        playSound(clickSound)
+        Round.mooveEvent(&currentEvents.unordered, buttonTag: sender.tag)
+        populateUIWithData(currentEvents.unordered)
     }
     
-    
-    
-    //MARK: Helper Method
-
-    func checkIfCorrect(){
-        if currentRound.checkIfCorrectOrder(proposition: currentEvents.random, correct: currentEvents.ordered){
+    //MARK: - Helper Method
+    private func checkIfCorrect(){
+        if currentRound.checkIfCorrectOrder(proposition: currentEvents.unordered, correct: currentEvents.ordered){
             //Correct
             selectInterface(.roundResultSuccess)
         } else {
@@ -134,8 +131,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func nextRound(){
-        
+    private func nextRound(){
         if numberOfRound < numberOfRoundMax {
             //Reinitialize the display of the countdown
             timerLbl.text = "0:\(timerSeconds)"
@@ -144,7 +140,7 @@ class ViewController: UIViewController {
             //extract the current events
             getCurrentEvents(currentRound)
             // populate the labels
-            populateUIWithData(currentEvents.random)
+            populateUIWithData(currentEvents.unordered)
             // Switch to the correct interface
             selectInterface(.roundInProgres)
             //Increment The number of rounds
@@ -154,31 +150,35 @@ class ViewController: UIViewController {
         }
     }
     
-    func getRandomRound() -> Round{
-        //Get a random Round
-        let roundWithInfo = GameControl.getRandomRound(randomIndexUsed, rounds: rounds)
-        randomIndexUsed.append(roundWithInfo.randomIndex)
+    private func getRandomRound() -> Round{
+        var roundWithInfo = (round:Round(), randomIndex:Int())
+        do {
+            roundWithInfo = try GameControl.getRandomRound(randomIndexUsed, rounds: rounds)
+            randomIndexUsed.append(roundWithInfo.randomIndex)
+        } catch RoundError.DowncastFail(let errorMessage) {
+            showAlert(errorMessage)
+        } catch let error{
+            showAlert("Unexptected Error", message: "\(error)")
+        }
         return roundWithInfo.round
     }
     
-    func getCurrentEvents(round:Round){
+    private func getCurrentEvents(round:Round){
         currentEvents.ordered = round.currentCorrectOrder
-        currentEvents.random = round.getEventsRandomized(round.currentCorrectOrder)
+        currentEvents.unordered = round.getEventsRandomized(round.currentCorrectOrder)
     }
     
-    func populateUIWithData(events:[Event]){
-        //eventsInRandomOrder = round.getEventsRandomized(round.currentCorrectOrder)
+    private func populateUIWithData(events:[Event]){
         boxOneLabel.text = events[0].title
         boxTwoLabel.text = events[1].title
         boxThreeLabel.text = events[2].title
         boxFourLabel.text = events[3].title
     }
     
-    func tryLoadData(nameOfFile name:String, ofType type:String){
+    private func tryLoadData(nameOfFile name:String, ofType type:String){
         do {
             let dictionary = try PlistConverter.dictionaryFromFile(name, ofType: type)
             rounds = try EventUnarchiver.eventInventoryFromDictionary(dictionary)
-            
         } catch EventsError.ConversionError(let errorMessage) {
             showAlert(errorMessage)
         } catch EventsError.InvalidKey(let errorMessage) {
@@ -190,8 +190,8 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: Time Helper Methods
-    func countdown(seconds seconds: Int) {
+    // MARK: - Time Helper Methods
+    private func countdown(seconds seconds: Int) {
         timer = seconds
         clock = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
     }
@@ -214,22 +214,87 @@ class ViewController: UIViewController {
         }
     }
     
-    //MARK: UI Helper
-    func showAlert(title: String, message: String? = nil, style: UIAlertControllerStyle = .Alert) {
+    //MARK: - Interface Helper
+    private func selectInterface(interface:Interfaces){
+        //Check if all Round have been displayed during this session
+        if randomIndexUsed.count == rounds.count {
+            randomIndexUsed = []
+        }
+        
+        userCanShake = false
+        hideResultUI(true)
+        hideBoxes(false) // The bottom UI is considered as a Fifth box
+        bottomUIRoundInProgress(true)
+        
+        switch interface {
+        case .instruction:
+            displayInstructionInterface()
+        case .roundInProgres:
+            displayRoudInProgressInterface()
+        case .roundResultSuccess:
+            displayRoundSucessInterface()
+        case .roundResultFail:
+            displayRoudFailInterface()
+        case .gameResult:
+            dispalayGameResultInterface()
+        }
+    }
+    
+    private func displayInstructionInterface(){
+        //use the score Label and the play again button to display some instructions
+        playSound(welcomeSound)
+        yourScoreLbl.text = "Welcome to the game !\nClass the moovies in order of release.\nYou have 60 seconds per round.\nGood Luck!"
+        playAgainBtn.setTitle("Let's Go !", forState: .Normal)
+        hideResultUI(false)
+        hideBoxes(true)
+    }
+    
+    private func displayRoudInProgressInterface(){
+        playSound(goSound)
+        countdown(seconds: timerSeconds)
+        userCanShake = true
+    }
+    
+    private func roundEnded(){
+        bottomUIRoundInProgress(false)
+        clock.invalidate()
+    }
+    
+    private func displayRoundSucessInterface(){
+        roundEnded()
+        nextRoundBtn.setImage(NextRoundImg.next_round_success.icon(), forState: .Normal)
+        playSound(correctSound)
+        score += 1
+    }
+    
+    private func displayRoudFailInterface(){
+        roundEnded()
+        nextRoundBtn.setImage(NextRoundImg.next_round_fail.icon(), forState: .Normal)
+        playSound(failSound)
+    }
+    
+    private func dispalayGameResultInterface(){
+        playSound(resultSound)
+        yourScoreLbl.text = "Your Score"
+        scoreLbl.text = "\(score)/\(numberOfRoundMax)"
+        playAgainBtn.setTitle("Play Again", forState: .Normal)
+        hideResultUI(false)
+        hideBoxes(true)
+    }
+    
+    //MARK: - UI Helper
+    private func showAlert(title: String, message: String? = nil, style: UIAlertControllerStyle = .Alert) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
-        
         let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: dismissAlert)
-        
         alertController.addAction(okAction)
-        
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func dismissAlert(sender: UIAlertAction) {
+    private func dismissAlert(sender: UIAlertAction) {
         tryLoadData(nameOfFile: sourceFile, ofType: typeSourceFile)
     }
     
-    func makeCornerRound(Viewradius radius:CGFloat, buttonRadius:CGFloat){
+    private func makeCornerRound(Viewradius radius:CGFloat, buttonRadius:CGFloat){
         boxOneView.layer.cornerRadius = radius
         boxTwoView.layer.cornerRadius = radius
         boxThreeView.layer.cornerRadius = radius
@@ -238,7 +303,7 @@ class ViewController: UIViewController {
         playAgainBtn.layer.cornerRadius = buttonRadius
     }
     
-    func hideBoxes(hidden:Bool){
+    private func hideBoxes(hidden:Bool){
         boxOneView.hidden = hidden
         boxTwoView.hidden = hidden
         boxThreeView.hidden = hidden
@@ -246,14 +311,14 @@ class ViewController: UIViewController {
         boxInfosView.hidden = hidden
     }
     
-    func bottomUIRoundInProgress(hidden:Bool){
+    private func bottomUIRoundInProgress(hidden:Bool){
         nextRoundBtn.hidden = hidden
         timerLbl.hidden = !hidden
         bottomInfoLbl.hidden = !hidden
         infoBtn.hidden = hidden
     }
     
-    func hideResultUI(hidden:Bool){
+    private func hideResultUI(hidden:Bool){
         logoImg.hidden = hidden
         yourScoreLbl.hidden = hidden
         scoreLbl.hidden = hidden
@@ -281,50 +346,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func selectInterface(interface:Interfaces){
-        switch interface {
-        case .instruction:
-            //use the score Label and the play again button to display some instructions
-            yourScoreLbl.text = "Welcome to the game\nClass the moovies in order of release\nYou have 60 seconds per round\nGood Luck!"
-            playAgainBtn.setTitle("Let's Go !", forState: .Normal)
-            hideResultUI(false)
-            hideBoxes(true)
-            userCanShake = false
-        case .roundInProgres:
-            hideResultUI(true)
-            hideBoxes(false)
-            bottomUIRoundInProgress(true)
-            countdown(seconds: timerSeconds)
-            userCanShake = true
-        case .roundResultSuccess:
-            hideResultUI(true)
-            hideBoxes(false)
-            nextRoundBtn.setImage(NextRoundImg.next_round_success.icon(), forState: .Normal)
-            bottomUIRoundInProgress(false)
-            playSound(correctSound)
-            clock.invalidate()
-            userCanShake = false
-            score += 1
-        case .roundResultFail:
-            hideResultUI(true)
-            hideBoxes(false)
-            nextRoundBtn.setImage(NextRoundImg.next_round_fail.icon(), forState: .Normal)
-            bottomUIRoundInProgress(false)
-            playSound(failSound)
-            clock.invalidate()
-            userCanShake = false
-        case .gameResult:
-            yourScoreLbl.text = "Your Score"
-            scoreLbl.text = "\(score)/\(numberOfRoundMax)"
-            playAgainBtn.setTitle("Play Again", forState: .Normal)
-            hideResultUI(false)
-            hideBoxes(true)
-            bottomUIRoundInProgress(true)
-            userCanShake = false
-        }
-    }
-    
-    func setBoxesHeiht(factor factor: CGFloat){
+    private func setBoxesHeiht(factor factor: CGFloat){
         //Get the height of the screen and divide it by a factor to get the height of every box
         let heightOfBox = UIScreen.mainScreen().bounds.height / factor
 
@@ -338,26 +360,34 @@ class ViewController: UIViewController {
         setDoubleArrowHeight(heightOfArrow: heightOfBox / 2)
     }
     
-    func setDoubleArrowHeight(heightOfArrow height:CGFloat){
+    private func setDoubleArrowHeight(heightOfArrow height:CGFloat){
         boxTwoUpArrowHeightConstraint.constant = height
         boxTwoDownArrowHeightConstraint.constant = height
         boxThreeUpArrowConstraint.constant = height
         boxThreeDownArrowConstraint.constant = height
     }
     
-    //MARK: sound Helper
+    //MARK: - sound Helper
     enum Sounds:String{
         case CorrectDing
         case IncorrectBuzz
+        case Click
+        case ResultSound
+        case Go
+        case Welcome
     }
     
-    func laodAllSounds(){
+    private func laodAllSounds(){
         let wav = "wav"
         correctSound = loadSound(correctSound, pathName: Sounds.CorrectDing.rawValue, type: wav)
         failSound = loadSound(failSound, pathName: Sounds.IncorrectBuzz.rawValue, type: wav)
+        clickSound = loadSound(clickSound, pathName: Sounds.Click.rawValue, type: wav)
+        resultSound = loadSound(resultSound, pathName: Sounds.ResultSound.rawValue, type: wav)
+        goSound = loadSound(goSound, pathName: Sounds.Go.rawValue, type: wav)
+        welcomeSound = loadSound(welcomeSound, pathName: Sounds.Welcome.rawValue, type: wav)
     }
     
-    func loadSound(systSoundId:SystemSoundID, pathName:String, type:String) -> SystemSoundID{
+    private func loadSound(systSoundId:SystemSoundID, pathName:String, type:String) -> SystemSoundID{
         var sound = SystemSoundID()
         let pathToSoundFile = NSBundle.mainBundle().pathForResource(pathName, ofType: type)
         let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
@@ -365,20 +395,17 @@ class ViewController: UIViewController {
         return sound
     }
     
-    func playSound(soundId:SystemSoundID) {
+    private func playSound(soundId:SystemSoundID) {
         AudioServicesPlaySystemSound(soundId)
     }
     
     // MARK: - Navigation
-     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is InfosViewController {
             let destinationVC = segue.destinationViewController as! InfosViewController
             destinationVC.url = currentRound.infosLink
         }
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
     }
 }
 

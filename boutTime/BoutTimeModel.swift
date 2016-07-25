@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import GameKit
 
-// MARK: Protocol
+// MARK: - Protocol
 protocol RoundType {
     var event1:Event { get }
     var event2:Event { get }
@@ -24,7 +24,7 @@ protocol RoundType {
 }
 
 protocol BoutTimeGame {
-    static func getRandomRound(lastIndexes:[Int], rounds:[RoundType]) -> (round:Round,randomIndex:Int)
+    static func getRandomRound(lastIndexes:[Int], rounds:[RoundType]) throws -> (round:Round,randomIndex:Int)
 }
 
 protocol EventType {
@@ -33,16 +33,18 @@ protocol EventType {
     init (position:PositionEvents, title:String)
 }
 
-// MARK: Error Type
-
+// MARK: - Error Type
 enum EventsError: ErrorType {
     case InvalidResource(String)
     case ConversionError(String)
     case InvalidKey(String)
 }
 
-// MARK: objects
+enum RoundError: ErrorType {
+    case DowncastFail(String)
+}
 
+// MARK: - Type
 enum PositionEvents {
     case First
     case Second
@@ -67,6 +69,7 @@ class Round:RoundType {
     var event4: Event
     var infosLink: String
     var currentCorrectOrder: [Event]
+    
     required init (event1:Event = Event(), event2:Event = Event(), event3: Event = Event(), event4: Event = Event(), infosLink:String = ""){
         self.event1 = event1
         self.event2 = event2
@@ -81,25 +84,26 @@ class Round:RoundType {
         // Randomize the events
         repeat {
             for index in 0..<tempEvents.count {
-                
-                // Current event
-                let currentEvent = tempEvents[index]
-                
-                // Randomly choose another index
+                // Randomly choose an index
                 let randomIndex = GKRandomSource.sharedRandom().nextIntWithUpperBound(tempEvents.count)
-                
-                // Swap events at the two indexes
-                tempEvents[index] = tempEvents[randomIndex]
-                tempEvents[randomIndex] = currentEvent
+                swapItem(array: &tempEvents, pos1:index, pos2:randomIndex)
             }
         } while checkIfCorrectOrder(proposition: tempEvents, correct: events)
         return tempEvents
     }
     
+    private func swapItem<Item>(inout array array:[Item],pos1:Int,pos2:Int){
+        let currentItem = array[pos1]
+        array[pos1] = array[pos2]
+        array[pos2] = currentItem
+    }
+    
     class func mooveEvent(inout events:[Event],buttonTag:Int) {
-        //Arrow buttons are tagged from top to bottom; from 1 to 6
-        // 1-3-5 are down button
-        // 2-4-6 are up button
+        //Arrow buttons are tagged from top to bottom;
+        //There is three swap possible.
+        //Tag 1: the two label of the top -> the 2 first arrow
+        //Tag 2: the two label in the middle -> the third and fourth arrow
+        //Tag 3: The two label of the bottom -> the fifth and sixth
         func swapEvent(index1:Int,_ index2:Int){
             let currentEvent = events[index1]
             events[index1] = events[index2]
@@ -107,21 +111,14 @@ class Round:RoundType {
         }
         switch buttonTag {
         case 1: swapEvent(0, 1)
-        case 2: swapEvent(0, 1)
-        case 3: swapEvent(1, 2)
-        case 4: swapEvent(1, 2)
-        case 5: swapEvent(2, 3)
-        case 6: swapEvent(2, 3)
+        case 2: swapEvent(1, 2)
+        case 3: swapEvent(2, 3)
         default: break
         }
     }
     
-    
     func checkIfCorrectOrder(proposition proposition:[Event], correct:[Event]) -> Bool {
         for index in 0..<proposition.count {
-            //TODO: delete print
-            print(proposition[index].position)
-            print(correct[index].position)
             if proposition[index].position != correct[index].position {
                 return false
             }
@@ -131,8 +128,7 @@ class Round:RoundType {
 }
 
 class GameControl: BoutTimeGame {
-    
-    class func getRandomRound(lastIndexes:[Int], rounds:[RoundType]) -> (round:Round,randomIndex:Int) {
+    class func getRandomRound(lastIndexes:[Int], rounds:[RoundType]) throws -> (round:Round,randomIndex:Int) {
         var currentIndex = Int()
         
         //While the currentIndex as already been used, generate a new random index
@@ -144,14 +140,13 @@ class GameControl: BoutTimeGame {
             let round = rounds[currentIndex] as! Round
             return (round,currentIndex)
         } else {
-            return (Round(),currentIndex)
+            throw RoundError.DowncastFail("Internal data error")
         }
     }
 }
 
 
-//MARK: Converter
-
+//MARK: - Converter
 class PlistConverter {
     class func dictionaryFromFile(resource: String, ofType type: String) throws -> [String : AnyObject] {
         
@@ -187,24 +182,6 @@ class EventUnarchiver {
                 throw EventsError.InvalidKey("Invalid Key")
             }
         }
-        
         return rounds
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

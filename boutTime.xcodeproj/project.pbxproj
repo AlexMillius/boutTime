@@ -29,6 +29,10 @@
 		D95AF15C1D425F5A0091B0F0 /* webview_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF14F1D425F5A0091B0F0 /* webview_bar.png */; };
 		D95AF1651D42952C0091B0F0 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF1641D42952C0091B0F0 /* Info.png */; };
 		D95AF1671D42984C0091B0F0 /* gameLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D95AF1661D42984C0091B0F0 /* gameLogo.png */; };
+		D99C7DDC1D465C13008E4CAD /* Click.wav in Resources */ = {isa = PBXBuildFile; fileRef = D99C7DDB1D465C13008E4CAD /* Click.wav */; };
+		D99C7DDE1D465D4D008E4CAD /* ResultSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = D99C7DDD1D465D4D008E4CAD /* ResultSound.wav */; };
+		D99C7DE01D465EA0008E4CAD /* Go.wav in Resources */ = {isa = PBXBuildFile; fileRef = D99C7DDF1D465EA0008E4CAD /* Go.wav */; };
+		D99C7DE21D466037008E4CAD /* Welcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = D99C7DE11D466037008E4CAD /* Welcome.wav */; };
 		D9B4DD7D1D45745700C5F9CE /* InfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4DD7C1D45745700C5F9CE /* InfosViewController.swift */; };
 		D9D70D391D42B595006BF196 /* Rounds.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9D70D381D42B595006BF196 /* Rounds.plist */; };
 		D9D70D3D1D42CA91006BF196 /* BoutTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D70D3C1D42CA91006BF196 /* BoutTimeModel.swift */; };
@@ -59,6 +63,10 @@
 		D95AF14F1D425F5A0091B0F0 /* webview_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webview_bar.png; sourceTree = "<group>"; };
 		D95AF1641D42952C0091B0F0 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Info.png; sourceTree = "<group>"; };
 		D95AF1661D42984C0091B0F0 /* gameLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameLogo.png; sourceTree = "<group>"; };
+		D99C7DDB1D465C13008E4CAD /* Click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Click.wav; sourceTree = "<group>"; };
+		D99C7DDD1D465D4D008E4CAD /* ResultSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ResultSound.wav; sourceTree = "<group>"; };
+		D99C7DDF1D465EA0008E4CAD /* Go.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Go.wav; sourceTree = "<group>"; };
+		D99C7DE11D466037008E4CAD /* Welcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Welcome.wav; sourceTree = "<group>"; };
 		D9B4DD7C1D45745700C5F9CE /* InfosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfosViewController.swift; sourceTree = "<group>"; };
 		D9D70D381D42B595006BF196 /* Rounds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Rounds.plist; sourceTree = "<group>"; };
 		D9D70D3C1D42CA91006BF196 /* BoutTimeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoutTimeModel.swift; sourceTree = "<group>"; };
@@ -102,7 +110,6 @@
 				D95AF1341D425D170091B0F0 /* Assets.xcassets */,
 				D95AF1361D425D170091B0F0 /* LaunchScreen.storyboard */,
 				D95AF1391D425D170091B0F0 /* Info.plist */,
-				D9D70D381D42B595006BF196 /* Rounds.plist */,
 				D95AF15D1D425F6C0091B0F0 /* Assets */,
 			);
 			path = boutTime;
@@ -111,6 +118,7 @@
 		D95AF15D1D425F6C0091B0F0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D9D70D381D42B595006BF196 /* Rounds.plist */,
 				D95AF15E1D425F760091B0F0 /* Sounds */,
 				D95AF15F1D425F810091B0F0 /* Images */,
 			);
@@ -120,7 +128,11 @@
 		D95AF15E1D425F760091B0F0 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				D99C7DE11D466037008E4CAD /* Welcome.wav */,
 				D95AF13F1D425E1E0091B0F0 /* CorrectDing.wav */,
+				D99C7DDB1D465C13008E4CAD /* Click.wav */,
+				D99C7DDF1D465EA0008E4CAD /* Go.wav */,
+				D99C7DDD1D465D4D008E4CAD /* ResultSound.wav */,
 				D95AF1401D425E1E0091B0F0 /* IncorrectBuzz.wav */,
 			);
 			name = Sounds;
@@ -212,15 +224,19 @@
 				D95AF1511D425F5A0091B0F0 /* down_full.png in Resources */,
 				D95AF1521D425F5A0091B0F0 /* down_half_selected.png in Resources */,
 				D95AF1351D425D170091B0F0 /* Assets.xcassets in Resources */,
+				D99C7DDC1D465C13008E4CAD /* Click.wav in Resources */,
 				D95AF15C1D425F5A0091B0F0 /* webview_bar.png in Resources */,
+				D99C7DDE1D465D4D008E4CAD /* ResultSound.wav in Resources */,
 				D95AF1671D42984C0091B0F0 /* gameLogo.png in Resources */,
 				D95AF1531D425F5A0091B0F0 /* down_half.png in Resources */,
+				D99C7DE21D466037008E4CAD /* Welcome.wav in Resources */,
 				D95AF1581D425F5A0091B0F0 /* up_full_selected.png in Resources */,
 				D95AF1561D425F5A0091B0F0 /* play_again.png in Resources */,
 				D95AF1501D425F5A0091B0F0 /* down_full_selected.png in Resources */,
 				D95AF1651D42952C0091B0F0 /* Info.png in Resources */,
 				D9D70D391D42B595006BF196 /* Rounds.plist in Resources */,
 				D95AF1331D425D170091B0F0 /* Main.storyboard in Resources */,
+				D99C7DE01D465EA0008E4CAD /* Go.wav in Resources */,
 				D95AF1551D425F5A0091B0F0 /* next_round_success.png in Resources */,
 				D95AF15B1D425F5A0091B0F0 /* up_half.png in Resources */,
 				D95AF1591D425F5A0091B0F0 /* up_full.png in Resources */,
